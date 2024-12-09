@@ -1,12 +1,25 @@
 import { createContext } from "react";
+import { useState, useEffect } from "react";    
 
 export const CitatContext = createContext()
 
+
 export function CitatContextProvider ({children}){
+
+    let [greetings, setGreetings] = useState()
 
     useEffect(() => {
         let getGreetings = async () => {
-            let respone = await fetch()
+            let response = await fetch(`https://api.api-ninjas.com/v1/quotes`)
+            let json = await response.json()
+            setGreetings(json.results)
         }
+        getGreetings()
     }, [])
+
+    return(
+        <CitatContext.Provider value={{ greetings, setGreetings}}>
+            {children}
+        </CitatContext.Provider>    
+    )
 }
