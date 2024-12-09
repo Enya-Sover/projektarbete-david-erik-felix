@@ -76,11 +76,13 @@ export function LoginContextProvider({ children }) {
     setRegUser([...regUser, newUser]); // Lägg till ny användare
   };
 
+  const [currentUser, setCurrentUser] = useState(null)
+
   
 
   return (
     <>
-      <LoginContext.Provider value={{regUser, addUser}}>{children}</LoginContext.Provider>
+      <LoginContext.Provider value={{regUser, addUser, currentUser, setCurrentUser}}>{children}</LoginContext.Provider>
     </>
   );
 }
