@@ -4,14 +4,14 @@ import { createContext, useEffect, useState } from "react";
 export const LoginContext = createContext();
 
 export function LoginContextProvider({ children }) {
-  let [regUser, setRegUser] = JSON.parse(localStorage.getItem('user')) ? useState(JSON.parse(localStorage.getItem('user')))
-: useState([{
+
+  let getUser = JSON.parse(localStorage.getItem('user')) || [{
     userName: "admin",
     password: "password",
     todos: [
       {
         id: 1,
-        titel: "laga mat",
+        title: "laga mat",
         description: "",
         estimation: 60,
         completed: false,
@@ -35,15 +35,17 @@ export function LoginContextProvider({ children }) {
         end: "2024-12-17T10:00",
       }
     ]
-  }]);
+  }]
+  let [regUser, setRegUser] = useState(getUser);
+  let [currentUser, setCurrentUser] = JSON.parse(localStorage.getItem('currentUser')) ? useState(JSON.parse(localStorage.getItem('currentUser'))) : useState(null)
 
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(regUser));
-  }, [regUser]);
+    localStorage.setItem('currentUser', JSON.stringify(currentUser))
+  }, [regUser, currentUser]);
 
  
 
-  let [currentUser, setCurrentUser] = useState(null)
 
   
 

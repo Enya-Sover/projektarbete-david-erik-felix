@@ -1,19 +1,29 @@
+import { useContext, useState } from "react";
+import { LoginContext } from "../context/LoginContext";
 
-import { useContext } from "react"
-import { LoginContext } from "../context/LoginContext"
+const TodoItem = ({ todo, index }) => {
 
-const TodoItem = ({todo, index})=>{
+  let toggleCompleted = () => {
+    
+  };
 
-    return(<>
-    <h2>Titel</h2>
-    <p>Beskrivning</p>
-    <p>Completed?</p>
-    <p>Tidsestimat</p>
-    <p>Kategori</p>
-    <p>Deadline</p>
+  return (
+    <div key={index}>
+      <h2>Title: {todo.title}</h2>
+      <p>Description: {todo.description}</p>
+      <p>
+        Completed: {`${todo.completed ? "Yes" : "No"}`}
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={()=> toggleCompleted}
+        ></input>
+      </p>
+      <p>Estemated time: {todo.estimation}</p>
+      <p>Category: {todo.category}</p>
+      <p>Deadline: {todo.deadline}</p>
+    </div>
+  );
+};
 
-
-    </>)
-}
-
-export default TodoItem
+export default TodoItem;

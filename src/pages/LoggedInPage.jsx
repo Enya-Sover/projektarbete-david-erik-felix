@@ -2,6 +2,7 @@ import { CitatContext } from "../context/CitatContext";
 import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const LoggedInPage = () => {
   let { greetings } = useContext(CitatContext);
@@ -17,6 +18,7 @@ const LoggedInPage = () => {
     <>
       <p>"{greetings.content}" API error </p>
       <button onClick={handleLogOut}>Log out</button>
+      <Link to='/todo'>Go to todo page</Link>
     </>
   );
 };

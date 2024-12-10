@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoItem from "../components/TodoItem";
 import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
+import { Link } from "react-router-dom";
 
 const TodoPage = () => {
   const { currentUser, regUser, setRegUser } = useContext(LoginContext);
-  const [todos, setTodos] = useState([]);
+
+  const currentUserData = regUser.find((user) => user.userName === currentUser);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -16,11 +18,13 @@ const TodoPage = () => {
   //Skapa funktion som loopar igenom regUser efter currentUser och skicka props till TodoItem med det objektet
   //Skapa funktionalitet i inputs och button för att kunna lägga till Todos och rendera ut dem under
   //uppdatera sidan när man trycker på knappen så försvinner all text i inputs
-  console.log(currentUser);
+
   let addTodo = () => {
-    const user = regUser.find((user) => user.userName === currentUser);
+    if (!currentUserData){
+        alert("You do not seem to be logged in.");
+    }
     const newTodo = {
-      id: todos.length + 1,
+      id: currentUserData.todos.length + 1,
       title: title,
       description: description,
       estimation: timeEstemate,
@@ -28,14 +32,19 @@ const TodoPage = () => {
       category: category,
       deadline: deadline,
     };
-    console.log(user);
-    if (user) {
-      regUser.todos.push(newTodo);
-    } else {
-      console.log("user not found");
+    
+    const updatedUser = {
+        ...currentUserData, 
+        todos: [...currentUserData.todos, newTodo]
     }
-    // window.location.reload()
+    const updatedRegUser = regUser.map((user) =>
+        user.userName === currentUser ? updatedUser : user
+      );
+    setRegUser(updatedRegUser)
+
+    window.location.reload()
   };
+
   return (
     <>
       <input
@@ -65,9 +74,11 @@ const TodoPage = () => {
       />
       <button onClick={addTodo}>Lägg till todo</button>
 
-      {currentUser &&
-        todos.map((todo, index) => <TodoItem todo={todo} index={index} />)}
-      <TodoItem />
+      {currentUserData?.todos.map((todo, index) => (
+        <TodoItem todo={todo} index={index} key={index} />
+      ))}
+      <br />
+      <Link to="/">Go back to homepage</Link>
     </>
   );
 };
