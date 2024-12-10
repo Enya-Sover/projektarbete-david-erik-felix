@@ -1,11 +1,24 @@
+import { CitatContext } from "../context/CitatContext";
+import { useState, useContext } from "react";
+import { LoginContext } from "../context/LoginContext";
+import { useNavigate } from "react-router-dom";
 
+const LoggedInPage = () => {
+  let { greetings } = useContext(CitatContext);
+  const { currentUser, setCurrentUser } = useContext(LoginContext);
+  const navigate = useNavigate();
 
-const LoggedInPage = ()=>{
+  const handleLogOut = () => {
+    setCurrentUser(null);
+    navigate("/");
+  };
 
-    return(<>
-    <h1>Welcome User!</h1>
-    
-    </>)
-}
+  return (
+    <>
+      <p>"{greetings.content}" API error </p>
+      <button onClick={handleLogOut}>Log out</button>
+    </>
+  );
+};
 
-export default LoggedInPage
+export default LoggedInPage;

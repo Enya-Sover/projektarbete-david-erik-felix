@@ -3,9 +3,13 @@ import { LoginContext } from "../context/LoginContext";
 import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
-  const { regUser, setCurrentUser } = useContext(LoginContext);
+  let { regUser, setCurrentUser } = useContext(LoginContext);
   const navigate = useNavigate();
-  
+  let { isUserLoggedIn, setIsUserLoggedIn } = useState(false);
+  const [error, setError] = useState("");
+
+  const [loginUsername, setLoginUsername] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
 
   //Här är en funktion för att kolla om anvnamn och lösenord är korrekt så man kan logga in
   let checkLogin = (char, pass) => {
@@ -14,19 +18,28 @@ const LogIn = () => {
     );
     if (requestUser) {
       setCurrentUser(char);
-      navigate("/login");
+      navigate("/loggedin");
+      setIsUserLoggedIn(true);
+    } else {
+      setError("Wrong input!");
     }
   };
+
   return (
     <div className="log-in-container">
       <h2>Log in</h2>
       <label htmlFor="username">Username: </label>
-      <input type="text" placeholder="Username" />
+      <input
+        type="text"
+        placeholder="Username"
+        onChange={(e) => setLoginUsername(e.target.value)}
+      />
       <br />
       <label htmlFor="password">Password: </label>
-      <input type="password" placeholder="Password" />
+      <input type="password" placeholder="Password" onChange={(e) => setLoginPassword(e.target.value)} />
       <br />
-      <button>Log in</button>
+      <button onClick={() => checkLogin(loginUsername, loginPassword)}>Log in</button>
+      <p>{error}</p>
     </div>
   );
 };
