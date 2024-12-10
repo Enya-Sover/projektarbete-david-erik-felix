@@ -49,7 +49,7 @@ export function LoginContextProvider({ children }) {
 
   return (
     <>
-      <LoginContext.Provider value={{regUser, setRegUser, setCurrentUser}}>{children}</LoginContext.Provider>
+      <LoginContext.Provider value={{regUser, setRegUser, currentUser, setCurrentUser}}>{children}</LoginContext.Provider>
     </>
   );
 }
