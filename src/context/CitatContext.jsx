@@ -1,6 +1,5 @@
 import { createContext } from "react";
 import { useState, useEffect } from "react";    
-import { generatePath } from "react-router-dom";
 
 export const CitatContext = createContext()
 
@@ -18,6 +17,7 @@ export function CitatContextProvider ({children}){
         getGreetings()
     }, [])
 console.log(greetings)
+
     return(
         <CitatContext.Provider value={{ greetings, setGreetings}}>
             {children}
