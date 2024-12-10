@@ -43,13 +43,13 @@ export function LoginContextProvider({ children }) {
 
  
 
-  const [currentUser, setCurrentUser] = useState(null)
+  let [currentUser, setCurrentUser] = useState(null)
 
   
 
   return (
     <>
-      <LoginContext.Provider value={{regUser, setRegUser, setCurrentUser}}>{children}</LoginContext.Provider>
+      <LoginContext.Provider value={{regUser, setRegUser, currentUser, setCurrentUser}}>{children}</LoginContext.Provider>
     </>
   );
 }
