@@ -1,5 +1,5 @@
 import { CitatContext } from "../context/CitatContext";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +7,7 @@ const LoggedInPage = () => {
   let { greetings } = useContext(CitatContext);
   const { currentUser, setCurrentUser } = useContext(LoginContext);
   const navigate = useNavigate();
-
+  console.log(currentUser);
   const handleLogOut = () => {
     setCurrentUser(null);
     navigate("/");
