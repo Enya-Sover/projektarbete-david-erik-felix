@@ -41,40 +41,7 @@ export function LoginContextProvider({ children }) {
     localStorage.setItem('user', JSON.stringify(regUser));
   }, [regUser]);
 
-  let addUser = (userName, password) => {
-    let newUser = {
-      userName: userName,
-      password: password,
-      todos: [
-        {
-          id: null, 
-          titel: '',
-          description: '',
-          estimation: 0,
-          completed: false,
-          category: '',
-          deadline: '',
-        },
-      ],
-      habits: [
-        {
-          id: null,
-          title: '',
-          repetitions: 0,
-          priority: '',
-        },
-      ],
-      events: [
-        {
-          id: null,
-          name: '',
-          start: '',
-          end: '',
-        },
-      ],
-    };
-    setRegUser([...regUser, newUser]); // Lägg till ny användare
-  };
+ 
 
   const [currentUser, setCurrentUser] = useState(null)
 
@@ -82,7 +49,7 @@ export function LoginContextProvider({ children }) {
 
   return (
     <>
-      <LoginContext.Provider value={{regUser, addUser, currentUser, setCurrentUser}}>{children}</LoginContext.Provider>
+      <LoginContext.Provider value={{regUser, setRegUser, setCurrentUser}}>{children}</LoginContext.Provider>
     </>
   );
 }
