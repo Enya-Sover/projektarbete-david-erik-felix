@@ -43,7 +43,7 @@ export function LoginContextProvider({ children }) {
 
  
 
-  const [currentUser, setCurrentUser] = useState(null)
+  let [currentUser, setCurrentUser] = useState(null)
 
   
 
