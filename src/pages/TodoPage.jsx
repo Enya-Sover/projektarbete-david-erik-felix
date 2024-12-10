@@ -9,9 +9,9 @@ const TodoPage = ()=>{
     const [todos, setTodos] = useState([])
 
     //Skapa funktion som loopar igenom regUser efter currentUser och skicka props till TodoItem med det objektet
-    //Skapa inputs och button för att kunna lägga till Todos och rendera ut dem under
+    //Skapa funktionalitet i inputs och button för att kunna lägga till Todos och rendera ut dem under
     //uppdatera sidan när man trycker på knappen så försvinner all text i inputs
-    
+
     return(<>
 
     <input type="text" placeholder="Titel"/>
