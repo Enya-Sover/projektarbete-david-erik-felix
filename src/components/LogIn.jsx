@@ -18,7 +18,7 @@ const LogIn = () => {
     );
     if (requestUser) {
       setCurrentUser(char);
-      navigate("/login");
+      navigate("/loggedin");
       setIsUserLoggedIn(true);
     } else {
       setError("Wrong input!");
