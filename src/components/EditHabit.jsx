@@ -1,7 +1,7 @@
 
 //Ändra i existerande habits
 
-let EditHabitPage = () => {
+let EditHabit = () => {
     return(
         <div>
             <h1>Edit habbit</h1>
@@ -9,4 +9,4 @@ let EditHabitPage = () => {
     )
 }
 
-export default EditHabitPage
+export default EditHabit

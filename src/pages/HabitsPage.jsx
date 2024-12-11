@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom"
 import AddNewHabitsPage from "../components/AddNewHabits"
+import { LoginContext } from "../context/LoginContext"
+import { useContext } from "react"
 
 
-///startsida 
+///startsida för habits 
 
 let HabitsPage = () => {
+    let {regUser, currentUser} = useContext(LoginContext)
+    
+    
     return(
         <div>
             <h1>Habit Start</h1>

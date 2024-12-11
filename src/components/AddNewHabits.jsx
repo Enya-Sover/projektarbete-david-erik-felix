@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 
 
-///Lite övningar (ska dela upp det sen ev flyta till ny component)
+///Lägg till en ny habit
 
 
 let AddNewHabits = () => {
