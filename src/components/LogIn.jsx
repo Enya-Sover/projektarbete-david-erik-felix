@@ -6,8 +6,10 @@ const LogIn = () => {
   let { regUser, setCurrentUser } = useContext(LoginContext);
   const navigate = useNavigate();
   let { isUserLoggedIn, setIsUserLoggedIn } = useState(false);
-  const [error, setError] = useState("");
+  
+  const [error, setError] = useState(""); // state för felmeddelande
 
+  // States för inloggningsuppgifterna
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
