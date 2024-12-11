@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 import { useNavigate } from "react-router-dom";
-import EventCalendar from "./EventCalendar";
 import { Link } from "react-router-dom";
 
 const LoggedInPage = ()=>{
