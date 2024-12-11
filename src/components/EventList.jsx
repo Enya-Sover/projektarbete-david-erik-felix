@@ -1,12 +1,21 @@
-import React from 'react';
-import Event from './Event';
+import React from "react";
+import EventItem from "./Event"; 
 
-const EventList = ({ events }) => (
-  <div>
-    {events.map((event) => (
-      <Event key={event.id} event={event} /> 
-    ))}
-  </div>
-);
+const EventList = ({ title, events }) => {
+  return (
+    <div className="event-list">
+      <h3>{title}</h3>
+      {events.length === 0 ? (
+        <p>No events available.</p>
+      ) : (
+        <ul>
+          {events.map((event) => (
+            <Event key={event.id} event={event} />
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
 
 export default EventList;
