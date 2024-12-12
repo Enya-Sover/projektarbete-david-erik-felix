@@ -16,7 +16,7 @@ let AddNewHabits = () => {
 
     let addHabit = () => {
         if (!currentUser) {
-            console.warn("Inte inloggad")
+            alert("Inte inloggad, skapa nytt eller logga in")
         
         }
 
