@@ -1,23 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../context/LoginContext";
 import EventList from "../components/EventList";
+import { Link } from "react-router-dom";
 
 const EventCalendar = () => {
   const { regUser, currentUser } = useContext(LoginContext);
 
-  // Kontrollerar om currentUser existerar och använd userName för att hitta rätt användare
-  const user = currentUser
-    ? regUser.find((u) => u.userName === currentUser.userName) 
-    : null;
 
- 
-  if (!user) {
+  const [currentUserData, setCurrentUserData] = useState(
+    regUser.find((user) => user.userName === currentUser)
+  );
+
+  if (!currentUser) {
     return <p>Please log in to see your calendar.</p>;
   }
 
-
   // variabler och funktioner för händelser
-  const userEvents = user ? user.events : [];
+  const userEvents = currentUser ? currentUserData.events : [];
   const now = new Date();
   const upcomingEvents = userEvents.filter((event) => new Date(event.start) > now);
   const pastEvents = userEvents.filter((event) => new Date(event.start) <= now);
@@ -30,12 +29,13 @@ const EventCalendar = () => {
   const sortPastEvents = pastEvents.sort(
     (a, b) => new Date(b.start) - new Date(a.start)
   );
-
+  console.log(currentUserData)
   return (
     <div>
       <h2>Event Calendar</h2>
       <EventList title="Upcoming Events" events={sortUpcomingEvents} />
-      <EventList title="Past Events" events={sortPastEvents} />
+      <EventList title="Past Events" events={sortPastEvents} currentUserData ={currentUserData} />
+      <Link to="/loggedin">Back</Link>
     </div>
   );
 };

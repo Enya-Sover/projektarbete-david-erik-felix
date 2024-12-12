@@ -17,7 +17,7 @@ const LoggedInPage = ()=>{
 
 
     return(<>
-    <h1>Welcome User!</h1>
+    <h1>Welcome {currentUser}!</h1>
     <Link to="/events">Event Calendar</Link>
     <button onClick={handleLogOut}>Log out</button>
     </>)

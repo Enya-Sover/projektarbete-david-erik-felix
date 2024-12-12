@@ -16,8 +16,7 @@ const LogIn = () => {
       (user) => user.userName === char && user.password === pass
     );
     if (requestUser) {
-      setCurrentUser(requestUser);
-      localStorage.setItem('currentUser', JSON.stringify(requestUser))
+      setCurrentUser(char);
       navigate("/loggedin");
       setIsUserLoggedIn(true);
     } else {
