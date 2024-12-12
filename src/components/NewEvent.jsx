@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 
 
-const NewEvent = (currentUserData, updateUserData) => {
+const NewEvent = ({currentUserData, updateUserData}) => {
   
 
   const [startTime, setStartTime] = useState("");
@@ -52,3 +52,5 @@ const NewEvent = (currentUserData, updateUserData) => {
 };
 
 export default NewEvent;
+
+// detta fungerar men när jag försöker skapa ett event blir user null, detta efter att meddelandet "event created successfully skapats"
