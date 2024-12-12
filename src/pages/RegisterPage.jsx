@@ -17,7 +17,7 @@ const RegisterPage = ()=>{
           todos: [
             {
               id: null, 
-              titel: '',
+              title: '',
               description: '',
               estimation: 0,
               completed: false,

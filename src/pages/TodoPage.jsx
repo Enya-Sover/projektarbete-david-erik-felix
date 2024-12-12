@@ -7,43 +7,61 @@ import { Link } from "react-router-dom";
 const TodoPage = () => {
   const { currentUser, regUser, setRegUser } = useContext(LoginContext);
 
-  const currentUserData = regUser.find((user) => user.userName === currentUser);
+  const [currentUserData, setCurrentUserData] = useState(
+    regUser.find((user) => user.userName === currentUser)
+  );
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [timeEstemate, setTimeEstimate] = useState(0);
+  const [estimation, setEstimation] = useState(0);
   const [category, setCategory] = useState("");
   const [deadline, setDeadline] = useState(0);
+  const [duplicate, setDuplicate] = useState(false);
 
-  //Skapa funktion som loopar igenom regUser efter currentUser och skicka props till TodoItem med det objektet
-  //Skapa funktionalitet i inputs och button för att kunna lägga till Todos och rendera ut dem under
-  //uppdatera sidan när man trycker på knappen så försvinner all text i inputs
+  const [error, setError] = useState("");
 
   let addTodo = () => {
-    if (!currentUserData){
-        alert("You do not seem to be logged in.");
+    if (!currentUser) {
+      alert("You do not seem to be logged in.");
     }
+
     const newTodo = {
       id: currentUserData.todos.length + 1,
-      title: title,
-      description: description,
-      estimation: timeEstemate,
+      title,
+      description,
+      estimation: parseInt(estimation),
       completed: false,
-      category: category,
-      deadline: deadline,
+      category,
+      deadline: parseInt(deadline),
     };
-    
-    const updatedUser = {
-        ...currentUserData, 
-        todos: [...currentUserData.todos, newTodo]
-    }
-    const updatedRegUser = regUser.map((user) =>
-        user.userName === currentUser ? updatedUser : user
-      );
-    setRegUser(updatedRegUser)
 
-    window.location.reload()
+    setDuplicate(currentUserData.todos.some(info => info.title === title));
+
+    if (duplicate) {
+      setError("Titeln finns redan");
+      setTimeout(() => {
+        setError("");
+        setDuplicate(false);
+      }, 2000);
+    } 
+
+    else {
+      console.log("hej från else");
+      const updatedUserData = {
+        ...currentUserData,
+        todos: [...currentUserData.todos, newTodo],
+      };
+
+      const updatedRegUser = regUser.map((user) =>
+        user.userName === currentUser ? updatedUserData : user
+      );
+      setRegUser(updatedRegUser);
+      setCurrentUserData(updatedUserData);
+
+      // window.location.reload();
+    }
   };
+
 
   return (
     <>
@@ -60,7 +78,7 @@ const TodoPage = () => {
       <input
         type="text"
         placeholder="Tidsestimat i minuter"
-        onChange={(e) => setTimeEstimate(e.target.value)}
+        onChange={(e) => setEstimation(e.target.value)}
       />
       <input
         type="text"
@@ -73,10 +91,40 @@ const TodoPage = () => {
         onChange={(e) => setDeadline(e.target.value)}
       />
       <button onClick={addTodo}>Lägg till todo</button>
+      <p>{error}</p>
+      <div className="todos">
+        <div className="completedTodos">
+          {currentUserData?.todos
+            .filter((todo) => todo.completed === true)
+            .map((todo, index) => {
+              return (
+                <TodoItem
+                  todo={todo}
+                  index={index}
+                  key={index}
+                  setCurrentUserData={setCurrentUserData}
+                  currentUserData={currentUserData}
+                />
+              );
+            })}
+        </div>
 
-      {currentUserData?.todos.map((todo, index) => (
-        <TodoItem todo={todo} index={index} key={index} />
-      ))}
+        <div className="notCompletedTodos">
+          {currentUserData?.todos
+            .filter((todo) => todo.completed !== true)
+            .map((todo, index) => {
+              return (
+                <TodoItem
+                  todo={todo}
+                  index={index}
+                  key={index}
+                  setCurrentUserData={setCurrentUserData}
+                  currentUserData={currentUserData}
+                />
+              );
+            })}
+        </div>
+      </div>
       <br />
       <Link to="/">Go back to homepage</Link>
     </>

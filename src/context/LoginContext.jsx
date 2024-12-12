@@ -40,7 +40,7 @@ export function LoginContextProvider({ children }) {
   let [currentUser, setCurrentUser] = JSON.parse(localStorage.getItem('currentUser')) ? useState(JSON.parse(localStorage.getItem('currentUser'))) : useState(null)
 
   useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(regUser));
+    localStorage.setItem('user', JSON.stringify(regUser))
     localStorage.setItem('currentUser', JSON.stringify(currentUser))
   }, [regUser, currentUser]);
 
