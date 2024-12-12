@@ -16,8 +16,7 @@ let AddNewHabits = () => {
 
     let addHabit = () => {
         if (!currentUser) {
-            alert("Inte inloggad, skapa nytt eller logga in")
-        
+            alert("Inte inloggad, skapa nytt eller logga in")    
         }
 
         let newHabitObject = {
@@ -59,7 +58,7 @@ let AddNewHabits = () => {
             </label>
             
             <label>repetition: 
-                <input type="text" value={newRepetition} onChange={(e) => setNewRepetition(e.target.value)} />
+                <input type="number" value={newRepetition} placeholder="Hur många ggr?" min="1" onChange={(e) => setNewRepetition(e.target.value)} />
             </label>
             <br />
             <button onClick={addHabit}>Add</button>
@@ -72,7 +71,9 @@ let AddNewHabits = () => {
             ))}
             
             <br />
-            <Link to="/habitsstart">Back to your habits</Link>
+            <Link to="/habits">Back to your habits</Link>
+            <br />
+            <Link to="/">Logga in</Link>
             
         </div>
     )

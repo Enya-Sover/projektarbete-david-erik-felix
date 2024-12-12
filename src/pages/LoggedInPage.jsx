@@ -18,7 +18,7 @@ const LoggedInPage = () => {
     <>
       <p>"{greetings.content}" API error </p>
       <button onClick={handleLogOut}>Log out</button>
-      <Link to="/habits">Habits</Link>
+      <button><Link to="/habits">Habits</Link></button>
       
     </>
   );
