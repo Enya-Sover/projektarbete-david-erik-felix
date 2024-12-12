@@ -1,32 +1,30 @@
 import React, { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../context/LoginContext";
 import EventList from "../components/EventList";
+import NewEvent from "../components/newEvent";
 import { Link } from "react-router-dom";
 
 const EventCalendar = () => {
-  const { regUser, currentUser } = useContext(LoginContext);
-
-  const [startTime, setStartTime] = useState("");
-  const [name, setName] = useState("");
+  const { regUser, setRegUser, currentUser } = useContext(LoginContext);
 
   const [currentUserData, setCurrentUserData] = useState(
     regUser.find((user) => user.userName === currentUser)
   );
 
+  const updateUserData = (updatedData) => {
+    setCurrentUserData(updatedData);
 
-  if (!currentUser) {
+    const updatedUsers = regUser.map((user) =>
+      user.userName === currentUser ? updatedData : user
+    );
+    setRegUser(updatedUsers);
+  };
+  if (!currentUserData) {
     return <p>Please log in to see your calendar.</p>;
   }
 
-  // const currentEvent = {
-  //   id: id,
-  //   name: name,
-  //   start: startTime,
-  //   end,
-  // };
-
   // variabler och funktioner för händelser
-  const userEvents = currentUser ? currentUserData.events : [];
+  const userEvents = currentUser ? currentUserData?.events : [];
   const now = new Date();
   const upcomingEvents = userEvents.filter(
     (event) => new Date(event.start) > now
@@ -40,20 +38,20 @@ const EventCalendar = () => {
   const sortPastEvents = pastEvents.sort(
     (a, b) => new Date(b.start) - new Date(a.start)
   );
-  console.log(currentUserData);
+  // console.log(currentUserData);
   return (
     <div>
       <h2>Event Calendar</h2>
-      <input
-        type="text"
-        placeholder="Starttid"
-        onChange={(e) => setStartTime(e.target.value)}
+      <NewEvent
+        currentUserData={currentUserData}
+        updateUserData={updateUserData}
       />
       <EventList title="Upcoming Events" events={sortUpcomingEvents} />
       <EventList
         title="Past Events"
         events={sortPastEvents}
         currentUserData={currentUserData}
+        
       />
       <Link to="/loggedin">Back</Link>
     </div>
