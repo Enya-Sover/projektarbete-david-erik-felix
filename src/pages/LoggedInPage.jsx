@@ -1,7 +1,8 @@
 import { CitatContext } from "../context/CitatContext";
 import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import HabitsPage from "./HabitsPage";
 
 const LoggedInPage = () => {
   let { greetings } = useContext(CitatContext);
@@ -17,6 +18,8 @@ const LoggedInPage = () => {
     <>
       <p>"{greetings.content}" API error </p>
       <button onClick={handleLogOut}>Log out</button>
+      <Link to="/habits">Habits</Link>
+      
     </>
   );
 };
