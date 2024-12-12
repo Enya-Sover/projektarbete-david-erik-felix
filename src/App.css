@@ -4,6 +4,11 @@
 }
 .todos{
   display: flex;
+  gap: 20px;
+}
+#errorMessage{
+  color: red;
+  font-weight: 800;
 }
 
 
