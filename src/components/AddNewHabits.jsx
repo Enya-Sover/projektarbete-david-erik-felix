@@ -58,16 +58,18 @@ let AddNewHabits = () => {
             </label>
             
             <label>repetition: 
-                <input type="number" value={newRepetition} placeholder="Hur många ggr?" min="1" onChange={(e) => setNewRepetition(e.target.value)} />
+                <input type="number" value={newRepetition} placeholder="1" min="1" onChange={(e) => setNewRepetition(e.target.value)} />
             </label>
             <br />
             <button onClick={addHabit}>Add</button>
             
             <h2>Your Habits</h2>
             {currentUser?.habits?.map((h) => (
+                <div className="borderNewHabit">
                 <p key={h.id}>
-                    Habit: {h.title} | Priority: {h.priority} | Repetitions: {h.repetitions}
+                    Habit: {h.title} | Priority: {h.priority} | Repetitions: {h.repetitions} ggr
                 </p>
+                </div>
             ))}
             
             <br />
