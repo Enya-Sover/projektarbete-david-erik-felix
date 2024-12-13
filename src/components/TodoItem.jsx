@@ -39,7 +39,7 @@ const TodoItem = ({ todo, index, setCurrentUserData, currentUserData }) => {
       <h2>Title: {todo.title}</h2>
       <p>Description: {todo.description}</p>
       <p>
-        Completed: {`${todo.completed ? "Yes" : "No"}`}
+        Status: {`${todo.completed ? "Complete" : "Not complete"}`}
         <input
           type="checkbox"
           checked={todo.completed}

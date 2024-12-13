@@ -19,7 +19,6 @@ function App() {
     <Route Path="/todo/:id" element={<SingleTodo/>}/>
     </Routes>
     </>
-  )
-}
+  )}
 
 export default App

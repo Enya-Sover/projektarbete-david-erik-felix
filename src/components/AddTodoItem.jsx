@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
+import { v4 as uuidv4 } from "uuid";
 
 let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
     const { currentUser, regUser, setRegUser } = useContext(LoginContext);
@@ -10,6 +11,7 @@ let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
     const [estimation, setEstimation] = useState(0);
     const [category, setCategory] = useState("");
     const [deadline, setDeadline] = useState(0);
+    const [chosenCategory, setChosenCategory] = useState(null)
 
     const [error, setError] = useState("");
 
@@ -19,7 +21,7 @@ let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
         }
     
         const newTodo = {
-          id: currentUserData.todos.length + 1,
+          id: uuidv4(),
           title,
           description,
           estimation: parseInt(estimation),
@@ -31,7 +33,7 @@ let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
         const duplicate = (currentUserData.todos.some(info => info.title.toLowerCase() === title.toLowerCase()));
     
         if (duplicate) {
-          setError("Titeln finns redan");
+          setError("Todo title already exists. Please choose another title!");
           setTimeout(() => {
             setError("");
           }, 2000);
@@ -53,33 +55,37 @@ let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
         }
       };
     return(<>
+    <select name="kategori" value={category} onChange={(e) => setCategory(e.target.value)}>
+        <option value="">Choose category</option>
+        <option value="health">Health</option>
+        <option value="housing">Housing</option>
+        <option value="pleasure">Pleasure</option>
+        <option value="economy">Economy</option>
+        <option value="work">Work</option>
+    </select>
     
       <input
         type="text"
-        placeholder="Titel"
+        placeholder="Title"
         onChange={(e) => setTitle(e.target.value)}
       />
       <input
         type="text"
-        placeholder="Beskrivning"
+        placeholder="Description"
         onChange={(e) => setDescription(e.target.value)}
       />
       <input
         type="text"
-        placeholder="Tidsestimat i minuter"
+        placeholder="Time estemation"
         onChange={(e) => setEstimation(e.target.value)}
       />
-      <input
-        type="text"
-        placeholder="Kategori"
-        onChange={(e) => setCategory(e.target.value)}
-      />
+     
       <input
         type="text"
         placeholder="Deadline"
         onChange={(e) => setDeadline(e.target.value)}
       />
-      <button onClick={addTodo}>Lägg till todo</button>
+      <button onClick={addTodo}>Add todo</button>
       <p id="errorMessage">{error}</p>
     </>)
 }
