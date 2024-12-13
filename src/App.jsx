@@ -16,7 +16,7 @@ function App() {
     <Route path="/register" element={<RegisterPage/>}/>
     <Route path="/loggedin" element={<LoggedInPage/>}/>
     <Route path="/todo" element={<TodoPage/>}/>
-    <Route Path="/todo/:id" element={<SingleTodo/>}/>
+    <Route path="/todo/:id" element={<SingleTodo/>}/>
     </Routes>
     </>
   )}

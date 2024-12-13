@@ -1,10 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
 import { LoginContext } from "../context/LoginContext";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
-const TodoItem = ({ todo, index, setCurrentUserData, currentUserData }) => {
-  const { currentUser, regUser, setRegUser } = useContext(LoginContext);
+const TodoItem = ({ todo, index, }) => {
+
+    const{id} = useParams()
+
+  const { currentUser, regUser, setRegUser, setCurrentUserData, currentUserData, capitalizeFirstLetter } = useContext(LoginContext);
   const todos = currentUserData.todos
 //   const {id} = useParams() kom ihåg hur useParams används
 
@@ -22,22 +25,12 @@ const TodoItem = ({ todo, index, setCurrentUserData, currentUserData }) => {
     setCurrentUserData(updatedUserData);
   };
 
-  const removeTodo = (ind) => {
-    if (todos !== null || todos !== undefined) {
-        const filteredTodos = currentUserData.todos.filter((_, i) => i !== ind)
-        const updatedUserData = {...currentUserData, todos: filteredTodos}
-        const updatedRegUser = regUser.map(user=> user.userName === currentUser ? updatedUserData : user)
-        setRegUser(updatedRegUser)
-        setCurrentUserData(updatedUserData)
-    }
-  };
-
-
+  
 
   return (
     <div key={index}>
-      <h2>Title: {todo.title}</h2>
-      <p>Description: {todo.description}</p>
+     <Link to={`/todo/${todo.id}`}> <h2>Title: {capitalizeFirstLetter(todo.title)}</h2></Link>
+        <p>Category: {capitalizeFirstLetter(todo.category)}</p>
       <p>
         Status: {`${todo.completed ? "Complete" : "Not complete"}`}
         <input
@@ -46,10 +39,7 @@ const TodoItem = ({ todo, index, setCurrentUserData, currentUserData }) => {
           onChange={toggleCompleted}
         ></input>
       </p>
-      <p>Estemated time: {todo.estimation} minutes</p>
-      <p>Category: {todo.category}</p>
-      <p>Deadline: {todo.deadline}</p>
-      <button onClick={()=> removeTodo(index)}>Delete</button>
+      
     </div>
   );
 };

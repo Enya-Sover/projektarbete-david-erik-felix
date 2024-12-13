@@ -6,29 +6,24 @@ import { Link } from "react-router-dom";
 import AddTodoItem from "../components/AddTodoItem";
 
 const TodoPage = () => {
-  const { currentUser, regUser } = useContext(LoginContext);
-
-  const [currentUserData, setCurrentUserData] = useState(
-    regUser.find((user) => user.userName === currentUser)
-  );
+  const { currentUser, regUser, setCurrentUserData, currentUserData, capitalizeFirstLetter  } = useContext(LoginContext);
 
   const [category, setCategory] = useState(null);
   const [complete, setComplete] = useState(null);
 
+  
+
   return (
     <>
-      <AddTodoItem
-        setCurrentUserData={setCurrentUserData}
-        currentUserData={currentUserData}
-      />
+    <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
+      <AddTodoItem setCurrentUserData={setCurrentUserData} currentUserData={currentUserData}/>
       <select
         name="categoryFilter"
         onChange={(e) => {
           if (e.target.value === ''){
             setCategory(null)
           } else {
-          setCategory(e.target.value)}}}
-      >
+          setCategory(e.target.value)}}}>
         <option value=''>Choose category</option>
         <option value="health">Health</option>
         <option value="housing">Housing</option>
@@ -48,7 +43,7 @@ const TodoPage = () => {
           }
         }}
       >
-        <option value="">Sort by complete</option>
+        <option value="">All</option>
         <option value="true">Complete</option>
         <option value="false">Not complete</option>
       </select>

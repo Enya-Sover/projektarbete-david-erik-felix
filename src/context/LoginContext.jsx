@@ -39,6 +39,11 @@ export function LoginContextProvider({ children }) {
   let [regUser, setRegUser] = useState(getUser);
   let [currentUser, setCurrentUser] = JSON.parse(localStorage.getItem('currentUser')) ? useState(JSON.parse(localStorage.getItem('currentUser'))) : useState(null)
 
+  const [currentUserData, setCurrentUserData] = useState(regUser.find((user) => user.userName === currentUser));
+  const capitalizeFirstLetter = (word)=>{
+    return word.charAt(0).toUpperCase() + word.slice(1)
+  }
+
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(regUser))
     localStorage.setItem('currentUser', JSON.stringify(currentUser))
@@ -51,7 +56,7 @@ export function LoginContextProvider({ children }) {
 
   return (
     <>
-      <LoginContext.Provider value={{regUser, setRegUser, currentUser, setCurrentUser}}>{children}</LoginContext.Provider>
+      <LoginContext.Provider value={{regUser, setRegUser, currentUser, setCurrentUser, currentUserData, setCurrentUserData, capitalizeFirstLetter}}>{children}</LoginContext.Provider>
     </>
   );
 }
