@@ -29,7 +29,7 @@ const TodoItem = ({ todo, index, }) => {
 
   return (
     <div key={index}>
-     <Link to={`/todo/${todo.id}`}> <h2>Title: {capitalizeFirstLetter(todo.title)}</h2></Link>
+     <Link to={`/todo/${todo.id}`}> <h3>Title: {capitalizeFirstLetter(todo.title)}</h3></Link>
         <p>Category: {capitalizeFirstLetter(todo.category)}</p>
       <p>
         Status: {`${todo.completed ? "Complete" : "Not complete"}`}

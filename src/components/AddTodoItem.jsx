@@ -11,7 +11,6 @@ let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
     const [estimation, setEstimation] = useState(0);
     const [category, setCategory] = useState("");
     const [deadline, setDeadline] = useState(0);
-    const [chosenCategory, setChosenCategory] = useState(null)
 
     const [error, setError] = useState("");
 

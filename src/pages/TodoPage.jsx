@@ -16,7 +16,11 @@ const TodoPage = () => {
   return (
     <>
     <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
+    <p>What would you like to do today?</p>
       <AddTodoItem setCurrentUserData={setCurrentUserData} currentUserData={currentUserData}/>
+
+      
+    <span>Filter:</span>
       <select
         name="categoryFilter"
         onChange={(e) => {
@@ -49,7 +53,7 @@ const TodoPage = () => {
       </select>
 
       <div className="todos">
-        <div className="notCompletedTodos">
+        <div className="notCompletedTodos"><h2>Not completed todos:</h2>
           {currentUserData?.todos
             .filter((todo) => {
               if (!category && !complete) {
@@ -73,7 +77,7 @@ const TodoPage = () => {
               />
             ))}
         </div>
-        <div className="completedTodos">
+        <div className="completedTodos"><h2>Completed todos:</h2>
           {currentUserData?.todos
             .filter((todo) => {
               if (!category && complete === null) {

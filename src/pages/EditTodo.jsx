@@ -2,17 +2,10 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import { LoginContext } from "../context/LoginContext";
 
-const SingleTodo = () => {
+const EditTodo = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const {
-    currentUserData,
-    currentUser,
-    setRegUser,
-    regUser,
-    setCurrentUserData,
-    capitalizeFirstLetter,
-  } = useContext(LoginContext);
+  const {currentUserData, currentUser, setRegUser, regUser, setCurrentUserData, capitalizeFirstLetter} = useContext(LoginContext);
   const [titleClicked, setTitleClicked] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [descriptionClicked, setDescriptionClicked] = useState(false);
@@ -21,7 +14,7 @@ const SingleTodo = () => {
   const [newEstimate, setNewEstimate] = useState("");
   const [deadlineClicked, setDeatLineClicked] = useState(false);
   const [newDeadLine, setNewDeadline] = useState("");
-  const [category, setCategory] = useState(null)
+
 
   console.log(currentUserData);
   const todo = currentUserData?.todos.find((t) => t.id === id);
@@ -62,7 +55,6 @@ const SingleTodo = () => {
   const editdead = () => {
     setDeatLineClicked(!deadlineClicked);
   };
-
   const titleEnter = (e) => {
     if (e.key === "Enter") {
       setTitleClicked(!titleClicked);
@@ -121,7 +113,6 @@ const SingleTodo = () => {
   };
   const categoryChange = (e) => {
     const selectedCategory = e.target.value;
-    setCategory(selectedCategory);
     const updatedTodo = currentUserData.todos.map((t) =>
       t.id === id ? { ...t, category: selectedCategory } : t
     );
@@ -132,6 +123,9 @@ const SingleTodo = () => {
     setRegUser(updatedRegUser);
     setCurrentUserData(updatedUserData);
   };
+
+
+
   return (
     <>
     <h2><i><u>Click to edit:</u></i></h2>
@@ -208,4 +202,4 @@ const SingleTodo = () => {
   );
 };
 
-export default SingleTodo;
+export default EditTodo;

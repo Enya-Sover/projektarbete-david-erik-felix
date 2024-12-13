@@ -4,7 +4,7 @@ import Home from './pages/Home'
 import RegisterPage from './pages/RegisterPage'
 import LoggedInPage from './pages/LoggedInPage'
 import TodoPage from './pages/TodoPage'
-import SingleTodo from './pages/SingleTodo'
+import EditTodo from './pages/EditTodo'
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
     <Route path="/register" element={<RegisterPage/>}/>
     <Route path="/loggedin" element={<LoggedInPage/>}/>
     <Route path="/todo" element={<TodoPage/>}/>
-    <Route path="/todo/:id" element={<SingleTodo/>}/>
+    <Route path="/todo/:id" element={<EditTodo/>}/>
     </Routes>
     </>
   )}
