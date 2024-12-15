@@ -71,12 +71,12 @@ let AddNewHabits = () => {
                 </p>
                 </div>
             ))}
-            
+            <footer className="Nav">
             <br />
             <Link to="/habits">Back to your habits</Link>
             <br />
             <Link to="/">Logga in</Link>
-            
+            </footer>
         </div>
     )
 }

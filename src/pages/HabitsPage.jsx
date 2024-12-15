@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { LoginContext } from "../context/LoginContext"
 
 
-///startsida för habits 
+///startsida för habits + edditHabits 
 
 let HabitsPage = () => {
   let { currentUser, setCurrentUser } = useContext(LoginContext)
+
+  
     
   let deleteHabit = (id) => {
     if (!currentUser) {
@@ -22,11 +24,18 @@ let HabitsPage = () => {
       let handleHabits = currentUser.habits.map((habit) => habit.id === id ?
     { ...habit, repetitions: a === "increase" ? habit.repetitions + 1 : Math.max(habit.repetitions -1, 0)} : habit)
   
-    setCurrentUser({ ...currentUser, habits: handleHabits})
+    setCurrentUser({ ...currentUser, habits: handleHabits}) 
     }
     
-  
-  
+    let resetHabit = (id) => {
+      let resetHabits = currentUser.habits.map((habit) => habit.id === id ? { ...habit, repetitions: 0 } :habit)
+
+      setCurrentUser({ ...currentUser, habits: resetHabits})
+    }
+    
+    
+    
+    
     return (
         <div>
           <h2>Welcome {currentUser?.userName }</h2>
@@ -36,12 +45,13 @@ let HabitsPage = () => {
             <h3>Your habits are:</h3>
             {currentUser?.habits? (
               currentUser.habits.map((h) => (
-                <div className="habitBorder">
-                <p key={h.id}>
+                <div className="habitBorder" key={h.id}> 
+                <p>
                 <p>HABIT: {h.title}</p> <p>PRIORITY: {h.priority} </p> <p> REPETITIONS: {h.repetitions}</p>
                 <button onClick={() => deleteHabit(h.id)}>Delete</button>
                 <button onClick={() => handleRepetitions(h.id, "increase")}> + </button>    
-                <button onClick={() => handleRepetitions(h.id, "decrease")}> - </button>            
+                <button onClick={() => handleRepetitions(h.id, "decrease")}> - </button>       
+                <button onClick={() => resetHabit(h.id)}>Reset</button>     
                 </p>
                 </div>
               ))
@@ -58,9 +68,5 @@ let HabitsPage = () => {
 
 export default HabitsPage
 
-
-          {/* <input type="checkbox" name="title" id="" />
-          <input type="checkbox" name="repetition" id="" />
-          <input type="checkbox" name="priority" id="" /> */}
 
 
