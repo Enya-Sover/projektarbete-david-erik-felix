@@ -5,21 +5,11 @@ import NewEvent from "../components/newEvent";
 import { Link } from "react-router-dom";
 
 const EventCalendar = () => {
-  const { regUser, setRegUser, currentUser } = useContext(LoginContext);
+  const { regUser, setRegUser, currentUser, setCurrentUserData, currentUserData } =
+    useContext(LoginContext);
 
-  const [currentUserData, setCurrentUserData] = useState(
-    regUser.find((user) => user.userName === currentUser)
-  );
-
-  const updateUserData = (updatedData) => {
-    setCurrentUserData(updatedData);
-
-    const updatedUsers = regUser.map((user) =>
-      user.userName === currentUser ? updatedData : user
-    );
-    setRegUser(updatedUsers);
-  };
   if (!currentUserData) {
+    window.location.reload()
     return <p>Please log in to see your calendar.</p>;
   }
 
@@ -38,21 +28,15 @@ const EventCalendar = () => {
   const sortPastEvents = pastEvents.sort(
     (a, b) => new Date(b.start) - new Date(a.start)
   );
-  // console.log(currentUserData);
+
+
+
   return (
     <div>
       <h2>Event Calendar</h2>
-      <NewEvent
-        currentUserData={currentUserData}
-        updateUserData={updateUserData}
-      />
+      <NewEvent />
       <EventList title="Upcoming Events" events={sortUpcomingEvents} />
-      <EventList
-        title="Past Events"
-        events={sortPastEvents}
-        currentUserData={currentUserData}
-        
-      />
+      <EventList title="Past Events" events={sortPastEvents} />
       <Link to="/loggedin">Back</Link>
     </div>
   );

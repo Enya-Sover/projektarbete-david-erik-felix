@@ -1,13 +1,20 @@
 import React, { useState, useContext } from "react";
+import { LoginContext } from "../context/LoginContext";
 
-
-const NewEvent = ({currentUserData, updateUserData}) => {
-  
+const NewEvent = ({ updateUserData }) => {
+  const {
+    regUser,
+    setRegUser,
+    currentUser,
+    setCurrentUserData,
+    currentUserData,
+  } = useContext(LoginContext);
 
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  // const [startDate, setStartDate] = useState("");
+  // const [endDate, setEndDate] = useState("");
   const [name, setName] = useState("");
-
 
   const createNewEvent = () => {
     const newEvent = {
@@ -16,24 +23,36 @@ const NewEvent = ({currentUserData, updateUserData}) => {
       start: startTime,
       end: endTime,
     };
+
     if (!startTime || !endTime || !name) {
       alert("Please fill in all fields!");
       return;
     }
 
-    updateUserData((prevData) => ({
-      ...prevData,
-      events: [...(prevData?.events || []), newEvent],
-    }));
+    const updateUserData = {
+      ...currentUserData,
+      events: [...currentUserData?.events, newEvent],
+    };
+
+    const updatedUsers = regUser.map((user) =>
+      user.userName === currentUser ? updateUserData : user
+    );
+    setRegUser(updatedUsers);
+    setCurrentUserData(updateUserData);
+
+   
     alert("Event created successfully");
   };
-
 
   return (
     <div className="create-event-container">
       <label htmlFor="name">
         {"Title: "}
-        <input type="text" placeholder="..." onChange={(e) => setName(e.target.value)} />
+        <input
+          type="text"
+          placeholder="..."
+          onChange={(e) => setName(e.target.value)}
+        />
       </label>
 
       <label htmlFor="startTime">
@@ -52,5 +71,3 @@ const NewEvent = ({currentUserData, updateUserData}) => {
 };
 
 export default NewEvent;
-
-// detta fungerar men när jag försöker skapa ett event blir user null, detta efter att meddelandet "event created successfully skapats"

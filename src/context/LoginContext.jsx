@@ -42,6 +42,9 @@ export function LoginContextProvider({ children }) {
       return JSON.parse(localStorage.getItem('currentUser')) || null;
     });
 
+    const [currentUserData, setCurrentUserData] = useState(
+      regUser.find((user) => user.userName === currentUser)
+    );
 
 
   useEffect(() => {
@@ -52,7 +55,7 @@ export function LoginContextProvider({ children }) {
   return (
     <>
       <LoginContext.Provider
-        value={{ regUser, setRegUser, currentUser, setCurrentUser }}
+        value={{ regUser, setRegUser, currentUser, setCurrentUser, setCurrentUserData, currentUserData }}
       >
         {children}
       </LoginContext.Provider>
