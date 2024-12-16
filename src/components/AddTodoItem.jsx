@@ -50,7 +50,7 @@ let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
           setRegUser(updatedRegUser);
           setCurrentUserData(updatedUserData);
     
-          // window.location.reload();
+          window.location.reload();
         }
       };
     return(<>

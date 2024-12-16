@@ -28,7 +28,7 @@ const TodoItem = ({ todo, index, }) => {
   
 
   return (
-    <div key={index}>
+    <div key={index} className="todo">
      <Link to={`/todo/${todo.id}`}> <h3>Title: {capitalizeFirstLetter(todo.title)}</h3></Link>
         <p>Category: {capitalizeFirstLetter(todo.category)}</p>
       <p>
