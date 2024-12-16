@@ -5,31 +5,29 @@ import NewEvent from "../components/newEvent";
 import { Link } from "react-router-dom";
 
 const EventCalendar = () => {
-  const { regUser, setRegUser, currentUser, setCurrentUserData, currentUserData } =
-    useContext(LoginContext);
+  const {
+    regUser,
+    setRegUser,
+    currentUser,
+    setCurrentUserData,
+    currentUserData,
+  } = useContext(LoginContext);
 
   if (!currentUserData) {
-    window.location.reload()
+    window.location.reload();
     return <p>Please log in to see your calendar.</p>;
   }
 
   // variabler och funktioner för händelser
-  const userEvents = currentUser ? currentUserData?.events : [];
   const now = new Date();
-  const upcomingEvents = userEvents.filter(
-    (event) => new Date(event.start) > now
-  );
-  const pastEvents = userEvents.filter((event) => new Date(event.start) <= now);
 
-  // funktioner för att sortera events
-  const sortUpcomingEvents = upcomingEvents.sort(
-    (a, b) => new Date(a.start) - new Date(b.start)
-  );
-  const sortPastEvents = pastEvents.sort(
-    (a, b) => new Date(b.start) - new Date(a.start)
-  );
+  const sortUpcomingEvents = currentUserData?.events
+    ?.filter((event) => new Date(event.start) > now)
+    .sort((a, b) => new Date(a.start) - new Date(b.start));
 
-
+  const sortPastEvents = currentUserData?.events
+    ?.filter((event) => new Date(event.start) <= now)
+    .sort((a, b) => new Date(b.start) - new Date(a.start));
 
   return (
     <div>

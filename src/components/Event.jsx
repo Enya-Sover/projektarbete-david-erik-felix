@@ -1,13 +1,19 @@
-import React, { useContext } from "react";
-import { LoginContext } from "../context/LoginContext";
+import React from "react";
 
 const Event = ({ event }) => {
+  const formatDateTime = (dateTime) => {
+    const date = new Date(dateTime);
+    return `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    })}`;
+  };
 
   return (
     <li className="event-item">
       <strong>{event.name}</strong> <br />
-      Start: {(event.start).toLocaleString()} <br />
-      Slut: {(event.end).toLocaleString()}
+      Start: {formatDateTime(event.start)} <br />
+      End: {formatDateTime(event.end)} <br />
       <button>Redigera</button>
       <button>Ta bort</button>
     </li>

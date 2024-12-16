@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Event from "./Event";
+import { LoginContext } from "../context/LoginContext";
 
-const EventList = ({ title, currentUserData }) => {
- 
-console.log(currentUserData)
+const EventList = ({ title }) => {
+  const { currentUserData } = useContext(LoginContext);
 
   return (
     <div className="event-list">
