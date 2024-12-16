@@ -6,38 +6,46 @@ import { Link } from "react-router-dom";
 import AddTodoItem from "../components/AddTodoItem";
 
 const TodoPage = () => {
-  const { currentUser, regUser, setCurrentUserData, currentUserData, capitalizeFirstLetter  } = useContext(LoginContext);
+  const {
+    currentUser,
+    regUser,
+    setCurrentUserData,
+    currentUserData,
+    capitalizeFirstLetter,
+  } = useContext(LoginContext);
 
   const [category, setCategory] = useState(null);
   const [complete, setComplete] = useState(null);
 
-  const [notCompleteOrder, setNotCompleteOrder] = useState(null)
-  const [completeOrder, setCompleteOrder] = useState(null)
+  const [notCompleteOrder, setNotCompleteOrder] = useState(null);
+  const [completeOrder, setCompleteOrder] = useState(null);
 
-  
-  const sortTodos=(todos, order)=>{
-    if (order === 'deadline'){
-      return [...todos].sort((a, b)=> a.deadline - b.deadline)
+  const sortTodos = (todos, order) => {
+    if (order === "deadline") {
+      return [...todos].sort((a, b) => a.deadline - b.deadline);
     }
-  
-  }
+  };
 
   return (
     <>
-    <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
-    <p>What would you like to do today?</p>
-      <AddTodoItem setCurrentUserData={setCurrentUserData} currentUserData={currentUserData}/>
-
-      
-    <span>Filter:</span>
+      <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
+      <p>What would you like to do today?</p>
+      <AddTodoItem
+        setCurrentUserData={setCurrentUserData}
+        currentUserData={currentUserData}
+      />
+      ƒ<span>Filter:</span>
       <select
         name="categoryFilter"
         onChange={(e) => {
-          if (e.target.value === ''){
-            setCategory(null)
+          if (e.target.value === "") {
+            setCategory(null);
           } else {
-          setCategory(e.target.value)}}}>
-        <option value=''>Choose category</option>
+            setCategory(e.target.value);
+          }
+        }}
+      >
+        <option value="">Choose category</option>
         <option value="health">Health</option>
         <option value="housing">Housing</option>
         <option value="pleasure">Pleasure</option>
@@ -48,7 +56,7 @@ const TodoPage = () => {
         name="completeFilter"
         onChange={(e) => {
           if (e.target.value === "") {
-            setComplete(null)
+            setComplete(null);
           } else if (e.target.value === "true") {
             setComplete(true);
           } else {
@@ -60,19 +68,23 @@ const TodoPage = () => {
         <option value="true">Complete</option>
         <option value="false">Not complete</option>
       </select>
-
       <div className="todos">
-        <div className="notCompletedTodos"><h2>Not completed todos:</h2>
-        <select name="" id="" onChange={(e)=> setNotCompleteOrder(e.target.value)}>
-          <option value="sortBy">Sort by</option>
-          <option value="deadline">Deadline</option>
-          <option value="estimation">Time estimation</option>
-        </select>
-        <select name="" id="">
-          <option value="order">Order</option>
-          <option value="rising">Rising</option>
-          <option value="falling">Falling</option>
-        </select>
+        <div className="notCompletedTodos">
+          <h2>Not completed todos:</h2>
+          <select
+            name=""
+            id=""
+            onChange={(e) => setNotCompleteOrder(e.target.value)}
+          >
+            <option value="sortBy">Sort by</option>
+            <option value="deadline">Deadline</option>
+            <option value="estimation">Time estimation</option>
+          </select>
+          <select name="" id="">
+            <option value="order">Order</option>
+            <option value="rising">Rising</option>
+            <option value="falling">Falling</option>
+          </select>
           {currentUserData?.todos
             .filter((todo) => {
               if (!category && !complete) {
@@ -96,17 +108,21 @@ const TodoPage = () => {
               />
             ))}
         </div>
-        <div className="completedTodos"><h2>Completed todos:</h2>
-        <select name="complete" onChange={(e)=> setCompleteOrder(e.target.value)}>
-          <option value="sortBy">Sort by</option>
-          <option value="deadline">Deadline</option>
-          <option value="estimation">Time estimation</option>
-        </select>
-        <select name="" id="">
-          <option value="order">Order</option>
-          <option value="rising">Rising</option>
-          <option value="falling">Falling</option>
-        </select>
+        <div className="completedTodos">
+          <h2>Completed todos:</h2>
+          <select
+            name="complete"
+            onChange={(e) => setCompleteOrder(e.target.value)}
+          >
+            <option value="sortBy">Sort by</option>
+            <option value="deadline">Deadline</option>
+            <option value="estimation">Time estimation</option>
+          </select>
+          <select name="" id="">
+            <option value="order">Order</option>
+            <option value="rising">Rising</option>
+            <option value="falling">Falling</option>
+          </select>
           {currentUserData?.todos
             .filter((todo) => {
               if (!category && complete === null) {

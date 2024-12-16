@@ -53,6 +53,7 @@ let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
           window.location.reload();
         }
       };
+      console.log(deadline)
     return(<>
     <select name="kategori" value={category} onChange={(e) => setCategory(e.target.value)}>
         <option value="">Choose category</option>
@@ -78,12 +79,12 @@ let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
         placeholder="Estimation in minutes"
         onChange={(e) => setEstimation(e.target.value)}
       />
-     
+     <label > Deadline: 
       <input
-        type="text"
-        placeholder="Deadline"
-        onChange={(e) => setDeadline(e.target.value)}
+        type="date"
+        onChange={(e)=>setDeadline(e.target.value)}
       />
+     </label>
       <button onClick={addTodo}>Add todo</button>
       <p id="errorMessage">{error}</p>
     </>)

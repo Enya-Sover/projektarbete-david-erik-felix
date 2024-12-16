@@ -158,7 +158,7 @@ const EditTodo = () => {
       )}
 
       {!estimateClicked ? (
-        <p onClick={editEst}>Estemated time: {todo.estimation} <button><FontAwesomeIcon icon={faPen} /> 
+        <p onClick={editEst}>Estemated time: {todo.estimation} minutes <button><FontAwesomeIcon icon={faPen} /> 
 </button></p>
       ) : (
         <input
@@ -175,7 +175,7 @@ const EditTodo = () => {
       ) : (
         <input
         onKeyDown={deadEnter}
-          type="text"
+          type="date"
           placeholder="Deadline"
           onChange={(e) => setNewDeadline(e.target.value)}
         ></input>
