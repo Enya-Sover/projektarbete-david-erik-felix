@@ -39,7 +39,32 @@ let HabitsPage = () => {
     return (
         <div>
           <h2>Welcome {currentUser?.userName }</h2>
-          <p>Sort todo</p>
+          <div className="filterPriority">
+          <h3>Fliter todo:</h3>
+          <select name="filter" id="priority">
+            <option value="filterPrio">Filter Priority</option>
+            <option value="high">High</option>
+            <option value="mid">Mid</option>
+            <option value="low">Low</option>
+            </select>
+
+          </div>
+         
+          <div className="sortRepetitions">   
+          <select name="" id="">
+            <option value="sortRep">Sort Repetitions</option>
+            <option value="descendingRep">High to Low</option>
+            <option value="ascendingRep">Low to High</option>
+          </select>
+          </div>
+          
+          <div className="sortPriority">
+          <select name="" id="">
+            <option value="sortPrio">Sort Priority</option>
+            <option value="descendingPrio">High to Low</option>
+            <option value="ascendingPrio">Low to High</option>
+          </select>
+          </div>
 
 
             <h3>Your habits are:</h3>
@@ -60,7 +85,6 @@ let HabitsPage = () => {
             )}
               <footer className="navigate">
               <Link to="/addhabits"><button>Add a new Habit</button></Link>
-              <Link to="/edithabit" > <button>Edit habit</button></Link>
               </footer>
         </div>
       )
