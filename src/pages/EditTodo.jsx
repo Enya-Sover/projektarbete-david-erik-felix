@@ -1,6 +1,8 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import { LoginContext } from "../context/LoginContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 const EditTodo = () => {
   const navigate = useNavigate();
@@ -130,7 +132,8 @@ const EditTodo = () => {
     <>
     <h2><i><u>Click to edit:</u></i></h2>
       {!titleClicked ? (
-        <p onClick={editTitle}>Title: {capitalizeFirstLetter(todo.title)}</p>
+        <p onClick={editTitle}>Title: {capitalizeFirstLetter(todo.title)}<button><FontAwesomeIcon icon={faPen} /> 
+</button></p>
       ) : (
         <input
           onKeyDown={titleEnter}
@@ -143,7 +146,8 @@ const EditTodo = () => {
       {!descriptionClicked ? (
         <p onClick={editDesc}>
           Description: {capitalizeFirstLetter(todo.description)}
-        </p>
+          <button><FontAwesomeIcon icon={faPen} /> 
+          </button></p>
       ) : (
         <input
           onKeyDown={descriptionEnter}
@@ -154,7 +158,8 @@ const EditTodo = () => {
       )}
 
       {!estimateClicked ? (
-        <p onClick={editEst}>Estemated time: {todo.estimation}</p>
+        <p onClick={editEst}>Estemated time: {todo.estimation} <button><FontAwesomeIcon icon={faPen} /> 
+</button></p>
       ) : (
         <input
         onKeyDown={estimateEnter}
@@ -165,7 +170,8 @@ const EditTodo = () => {
       )}
 
       {!deadlineClicked ? (
-        <p onClick={editdead}>Deadline: {todo.deadline}</p>
+        <p onClick={editdead}>Deadline: {todo.deadline}<button><FontAwesomeIcon icon={faPen} /> 
+</button></p>
       ) : (
         <input
         onKeyDown={deadEnter}
