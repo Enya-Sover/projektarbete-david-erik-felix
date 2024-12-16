@@ -5,6 +5,8 @@ import RegisterPage from './pages/RegisterPage'
 import LoggedInPage from './pages/LoggedInPage'
 import TodoPage from './pages/TodoPage'
 import EditTodo from './pages/EditTodo'
+import EventCalendar from './pages/EventCalendar'
+
 
 function App() {
 
@@ -17,7 +19,9 @@ function App() {
     <Route path="/loggedin" element={<LoggedInPage/>}/>
     <Route path="/todo" element={<TodoPage/>}/>
     <Route path="/todo/:id" element={<EditTodo/>}/>
+    <Route path="/events" element={<EventCalendar/>} />
     </Routes>
+
     </>
   )}
 

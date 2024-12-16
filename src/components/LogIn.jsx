@@ -5,13 +5,12 @@ import { useNavigate } from "react-router-dom";
 const LogIn = () => {
   let { regUser, setCurrentUser } = useContext(LoginContext);
   const navigate = useNavigate();
-  let { isUserLoggedIn, setIsUserLoggedIn } = useState(false);
-  const [error, setError] = useState("");
 
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false); 
+  const [error, setError] = useState("");
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-  //Här är en funktion för att kolla om anvnamn och lösenord är korrekt så man kan logga in
   let checkLogin = (char, pass) => {
     const requestUser = regUser.find(
       (user) => user.userName === char && user.password === pass

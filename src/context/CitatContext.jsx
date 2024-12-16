@@ -17,7 +17,6 @@ export function CitatContextProvider ({children}){
         getGreetings()
     }, [])
 
-
     return(
         <CitatContext.Provider value={{ greetings, setGreetings}}>
             {children}

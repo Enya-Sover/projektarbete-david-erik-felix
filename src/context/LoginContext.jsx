@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 
-
 export const LoginContext = createContext();
 
 export function LoginContextProvider({ children }) {
