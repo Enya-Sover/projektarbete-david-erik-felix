@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import FutureEvent from "../components/FutureEvent";
 import PastEvents from "../components/PastEvents";
 
+
 const EventCalendar = () => {
   const {
     regUser,
