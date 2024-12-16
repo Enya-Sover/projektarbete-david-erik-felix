@@ -11,7 +11,16 @@ const TodoPage = () => {
   const [category, setCategory] = useState(null);
   const [complete, setComplete] = useState(null);
 
+  const [notCompleteOrder, setNotCompleteOrder] = useState(null)
+  const [completeOrder, setCompleteOrder] = useState(null)
+
   
+  const sortTodos=(todos, order)=>{
+    if (order === 'deadline'){
+      return [...todos].sort((a, b)=> a.deadline - b.deadline)
+    }
+  
+  }
 
   return (
     <>
@@ -54,6 +63,16 @@ const TodoPage = () => {
 
       <div className="todos">
         <div className="notCompletedTodos"><h2>Not completed todos:</h2>
+        <select name="" id="" onChange={(e)=> setNotCompleteOrder(e.target.value)}>
+          <option value="sortBy">Sort by</option>
+          <option value="deadline">Deadline</option>
+          <option value="estimation">Time estimation</option>
+        </select>
+        <select name="" id="">
+          <option value="order">Order</option>
+          <option value="rising">Rising</option>
+          <option value="falling">Falling</option>
+        </select>
           {currentUserData?.todos
             .filter((todo) => {
               if (!category && !complete) {
@@ -78,6 +97,16 @@ const TodoPage = () => {
             ))}
         </div>
         <div className="completedTodos"><h2>Completed todos:</h2>
+        <select name="complete" onChange={(e)=> setCompleteOrder(e.target.value)}>
+          <option value="sortBy">Sort by</option>
+          <option value="deadline">Deadline</option>
+          <option value="estimation">Time estimation</option>
+        </select>
+        <select name="" id="">
+          <option value="order">Order</option>
+          <option value="rising">Rising</option>
+          <option value="falling">Falling</option>
+        </select>
           {currentUserData?.todos
             .filter((todo) => {
               if (!category && complete === null) {

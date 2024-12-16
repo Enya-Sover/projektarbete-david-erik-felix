@@ -75,7 +75,7 @@ let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
       />
       <input
         type="text"
-        placeholder="Time estemation"
+        placeholder="Estimation in minutes"
         onChange={(e) => setEstimation(e.target.value)}
       />
      
