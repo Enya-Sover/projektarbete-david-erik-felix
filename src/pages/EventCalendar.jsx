@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../context/LoginContext";
-import EventList from "../components/EventList";
 import NewEvent from "../components/newEvent";
 import { Link } from "react-router-dom";
+import FutureEvent from "../components/FutureEvent";
+import PastEvents from "../components/PastEvents";
 
 const EventCalendar = () => {
   const {
@@ -33,8 +34,12 @@ const EventCalendar = () => {
     <div>
       <h2>Event Calendar</h2>
       <NewEvent />
-      <EventList title="Upcoming Events" events={sortUpcomingEvents} />
-      <EventList title="Past Events" events={sortPastEvents} />
+      <ul>
+        Past events
+    {sortPastEvents.map(event => <PastEvents title="Upcoming Events" event={event} />)}
+    Future events
+    {sortUpcomingEvents.map(event => <FutureEvent title="Upcoming Events" event={event} />)}
+    </ul>
       <Link to="/loggedin">Back</Link>
     </div>
   );
