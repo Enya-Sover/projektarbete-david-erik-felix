@@ -8,7 +8,6 @@ const LoggedInPage = () => {
   let { greetings } = useContext(CitatContext);
   const { currentUser, setCurrentUser } = useContext(LoginContext);
   const navigate = useNavigate();
-  console.log(currentUser);
   const handleLogOut = () => {
     setCurrentUser(null);
     navigate("/");
@@ -17,6 +16,7 @@ const LoggedInPage = () => {
   return (
     <>
       <p>"{greetings.content}" API error </p>
+      <Link to="/events">Event Calendar</Link>
       <button onClick={handleLogOut}>Log out</button>
       <Link to='/todo'>Go to todo page</Link>
     </>

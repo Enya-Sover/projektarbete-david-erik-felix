@@ -18,7 +18,7 @@ const EditTodo = () => {
   const [newDeadLine, setNewDeadline] = useState("");
 
 
-  console.log(currentUserData);
+
   const todo = currentUserData?.todos.find((t) => t.id === id);
 
   const removeTodo = (id) => {

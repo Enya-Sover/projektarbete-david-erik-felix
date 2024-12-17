@@ -1,15 +1,15 @@
 import { useContext} from "react";
 import { LoginContext } from "../context/LoginContext";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
-const TodoItem = ({ todo, index, }) => {
+const TodoItem = ({ todo, index }) => {
 
-    const{id} = useParams()
+
 
   const { currentUser, regUser, setRegUser, setCurrentUserData, currentUserData, capitalizeFirstLetter } = useContext(LoginContext);
   const todos = currentUserData.todos
-//   const {id} = useParams() kom ihåg hur useParams används
+
 
   const toggleCompleted = () => {
     const updatedTodo = todos.map(currentTodo =>

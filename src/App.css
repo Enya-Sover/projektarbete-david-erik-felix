@@ -17,6 +17,12 @@
   font-weight: 800;
 }
 
+.addTodo{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
 
 
 

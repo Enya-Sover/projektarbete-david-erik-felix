@@ -26,7 +26,7 @@ let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
           estimation: parseInt(estimation),
           completed: false,
           category,
-          deadline: parseInt(deadline),
+          deadline: new Date(deadline),
         };
     
         const duplicate = (currentUserData.todos.some(info => info.title.toLowerCase() === title.toLowerCase()));
@@ -49,12 +49,12 @@ let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
           );
           setRegUser(updatedRegUser);
           setCurrentUserData(updatedUserData);
+
     
           window.location.reload();
         }
       };
-      console.log(deadline)
-    return(<>
+    return(<div className="addTodo">
     <select name="kategori" value={category} onChange={(e) => setCategory(e.target.value)}>
         <option value="">Choose category</option>
         <option value="health">Health</option>
@@ -79,15 +79,15 @@ let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
         placeholder="Estimation in minutes"
         onChange={(e) => setEstimation(e.target.value)}
       />
-     <label > Deadline: 
+     
       <input
         type="date"
-        onChange={(e)=>setDeadline(e.target.value)}
+        placeholder="Deadline"
+        onChange={(e) => setDeadline(e.target.value)}
       />
-     </label>
       <button onClick={addTodo}>Add todo</button>
       <p id="errorMessage">{error}</p>
-    </>)
+    </div>)
 }
 
 export default AddTodoItem
