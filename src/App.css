@@ -40,3 +40,31 @@
 .read-the-docs {
   color: #888;
 }
+
+.create.events-container {
+  font-size: 20p;
+}
+
+.past-events-container {
+  padding: 10px;
+}
+
+.past-events-container li {
+  color: #aaa;  
+}
+
+.new-events-container {
+  padding: 10px;
+}
+
+.filter-dropdown select {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.events-container h3 {
+  margin-top: 20px;
+  color: #333;
+}
+
+
