@@ -11,6 +11,7 @@ const Home = () => {
     return (<>
         <h2>Home</h2>
         <LogIn />
+        
 
         <p>Not a user? Click <Link to="/register">here</Link> to register</p>
         </>)

@@ -11,6 +11,7 @@ const TodoPage = () => {
     setCurrentUserData,
     currentUserData,
     capitalizeFirstLetter,
+    setCurrentUser
   } = useContext(LoginContext);
 
   const [category, setCategory] = useState(null);
@@ -90,8 +91,6 @@ const TodoPage = () => {
               return a.deadline - b.deadline
             } else if(risingFalling === 'falling' && deadlineEstimation === 'deadline'){
               return  b.deadline - a.deadline 
-            } else {
-              return ''
             }
           })
             .filter((todo) => {
@@ -165,7 +164,8 @@ const TodoPage = () => {
         </div>
       </div>
       <br />
-      <Link to="/">Go back to homepage</Link>
+      <Link to="/" onClick={setCurrentUser(null)}>Log out</Link>
+      <Link to="/loggedin">Go to home</Link>
     </>
   );
 };
