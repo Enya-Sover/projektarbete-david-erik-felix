@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TodoItem from "../components/TodoItem";
 import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
@@ -8,7 +8,6 @@ import AddTodoItem from "../components/AddTodoItem";
 const TodoPage = () => {
   const {
     currentUser,
-    setCurrentUserData,
     currentUserData,
     capitalizeFirstLetter,
     setCurrentUser
@@ -25,10 +24,7 @@ const TodoPage = () => {
     <>
       <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
       <p>What would you like to do today?</p>
-      <AddTodoItem
-        setCurrentUserData={setCurrentUserData}
-        currentUserData={currentUserData}
-      />
+      <AddTodoItem />
       <span>Filter:</span>
       <select
         name="categoryFilter"
@@ -80,7 +76,6 @@ const TodoPage = () => {
             <option value="rising">Rising</option>
             <option value="falling">Falling</option>
           </select>
-{console.log(currentUserData.todos)}
 
           {currentUserData?.todos.sort((a,b)=>{
             if (risingFalling === 'rising'  && deadlineEstimation === 'estimation'){
@@ -110,8 +105,6 @@ const TodoPage = () => {
                 todo={todo}
                 index={index}
                 key={index}
-                setCurrentUserData={setCurrentUserData}
-                currentUserData={currentUserData}
               />
             ))}
         </div>
@@ -164,7 +157,7 @@ const TodoPage = () => {
         </div>
       </div>
       <br />
-      <Link to="/" onClick={setCurrentUser(null)}>Log out</Link>
+      <Link to="/" onClick={()=> setCurrentUser(null)}>Log out</Link>
       <Link to="/loggedin">Go to home</Link>
     </>
   );

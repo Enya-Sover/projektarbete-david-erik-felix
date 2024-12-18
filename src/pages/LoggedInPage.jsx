@@ -1,8 +1,7 @@
 import { CitatContext } from "../context/CitatContext";
 import { useContext, React } from "react";
 import { LoginContext } from "../context/LoginContext";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 import { Link, useNavigate } from "react-router-dom";
 
 const LoggedInPage = () => {
@@ -20,7 +19,7 @@ const LoggedInPage = () => {
   };
 
   const today = new Date()
-  console.log(today)
+
   const threeTodos = currentUserData.todos.slice(-3).map((todo) => todo);
   const threeEvents = currentUserData.events.sort((a, b) => new Date(b.start) - new Date(a.start)).slice(-3)
   const threeHabits = currentUserData.habits.sort((a, b) => b.repetitions - a.repetitions).slice(-3)

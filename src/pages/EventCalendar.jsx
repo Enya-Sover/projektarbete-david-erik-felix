@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { LoginContext } from "../context/LoginContext";
 import NewEvent from "../components/newEvent";
 import { Link } from "react-router-dom";
@@ -18,6 +18,7 @@ const EventCalendar = () => {
   if (!currentUserData) {
     window.location.reload();
     return <p>Please log in to see your calendar.</p>;
+
   }
 
   // variabler och funktioner för händelser

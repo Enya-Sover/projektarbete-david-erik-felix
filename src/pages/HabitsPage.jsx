@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { LoginContext } from "../context/LoginContext"
 
 
 ///startsida för habits + edditHabits 
 
 let HabitsPage = () => {
-  let { currentUser, setCurrentUser } = useContext(LoginContext)
+  let { currentUser, setCurrentUser, currentUserData, setCurrentUserData} = useContext(LoginContext)
 
   
     
@@ -14,23 +14,23 @@ let HabitsPage = () => {
     if (!currentUser) {
       alert("logga in")
     } else {
-      let updatedHabit = currentUser.habits.filter((habits) => habits.id !== id)
+      let updatedHabit = currentUserData.habits.filter((habits) => habits.id !== id)
   
-    setCurrentUser({ ...currentUser, habits: updatedHabit })
+    setCurrentUserData({ ...currentUserData, habits: updatedHabit })
     }
   }
 
     let handleRepetitions = (id, a) => {
-      let handleHabits = currentUser.habits.map((habit) => habit.id === id ?
+      let handleHabits = currentUserData.habits.map((habit) => habit.id === id ?
     { ...habit, repetitions: a === "increase" ? habit.repetitions + 1 : Math.max(habit.repetitions -1, 0)} : habit)
   
-    setCurrentUser({ ...currentUser, habits: handleHabits}) 
+    setCurrentUserData({ ...currentUserData, habits: handleHabits}) 
     }
     
     let resetHabit = (id) => {
-      let resetHabits = currentUser.habits.map((habit) => habit.id === id ? { ...habit, repetitions: 0 } :habit)
+      let resetHabits = currentUserData.habits.map((habit) => habit.id === id ? { ...habit, repetitions: 0 } :habit)
 
-      setCurrentUser({ ...currentUser, habits: resetHabits})
+      setCurrentUserData({ ...currentUserData, habits: resetHabits})
     }
     
     
@@ -38,7 +38,7 @@ let HabitsPage = () => {
     
     return (
         <div>
-          <h2>Welcome {currentUser?.userName }</h2>
+          <h2>Welcome {currentUserData?.userName }</h2>
           <div className="filterPriority">
           <h3>Fliter todo:</h3>
           <select name="filter" id="priority">
@@ -68,8 +68,8 @@ let HabitsPage = () => {
 
 
             <h3>Your habits are:</h3>
-            {currentUser?.habits? (
-              currentUser.habits.map((h) => (
+            {(
+              currentUserData.habits.map((h) => (
                 <div className="habitBorder" key={h.id}> 
                 <p>
                 <p>HABIT: {h.title}</p> <p>PRIORITY: {h.priority} </p> <p> REPETITIONS: {h.repetitions}</p>
@@ -80,9 +80,7 @@ let HabitsPage = () => {
                 </p>
                 </div>
               ))
-            ) :(
-              <br />
-            )}
+            ) }
               <footer className="navigate">
               <Link to="/addhabits"><button>Add a new Habit</button></Link>
               </footer>
