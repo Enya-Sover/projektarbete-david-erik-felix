@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { LoginContext } from "../context/LoginContext"
 
 
 ///startsida för habits + edditHabits 
 
 let HabitsPage = () => {
-  let { currentUser, setCurrentUser, currentUserData, setCurrentUserData} = useContext(LoginContext)
+  let { currentUser, currentUserData, setCurrentUserData} = useContext(LoginContext)
 
-  
+  let [increaseRep, setIncreaseRep] = useState(0)
     
   let deleteHabit = (id) => {
     if (!currentUser) {
