@@ -3,8 +3,8 @@ import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 import { v4 as uuidv4 } from "uuid";
 
-let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
-    const { currentUser, regUser, setRegUser } = useContext(LoginContext);
+let AddTodoItem = ()=>{
+    const { currentUser, regUser, setRegUser, setCurrentUserData, currentUserData } = useContext(LoginContext);
    
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -43,7 +43,7 @@ let AddTodoItem = ({currentUserData, setCurrentUserData})=>{
             ...currentUserData,
             todos: [...currentUserData?.todos, newTodo],
           };
-    
+
           const updatedRegUser = regUser.map((user) =>
             user.userName === currentUser ? updatedUserData : user
           );

@@ -19,7 +19,7 @@ const TodoPage = () => {
   const [risingFalling, setRisingFalling] = useState(null);
   const [deadlineEstimation, setDeadlineEstimation] = useState(null);
 
-  
+  console.log(currentUserData)
   return (
     <>
       <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
