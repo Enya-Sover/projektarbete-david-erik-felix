@@ -51,8 +51,6 @@ export function LoginContextProvider({ children }) {
  
 
 
-  
-
   return (
     <>
       <LoginContext.Provider value={{regUser, setRegUser, currentUser, setCurrentUser, currentUserData, setCurrentUserData, capitalizeFirstLetter}}>{children}</LoginContext.Provider>

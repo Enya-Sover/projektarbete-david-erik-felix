@@ -8,6 +8,11 @@ import EditTodo from './pages/EditTodo'
 import EventCalendar from './pages/EventCalendar'
 
 
+//Habit
+
+import HabitsPage from './pages/HabitsPage'
+import AddNewHabits from './components/AddNewHabits'
+
 function App() {
 
 
@@ -20,6 +25,9 @@ function App() {
     <Route path="/todo" element={<TodoPage/>}/>
     <Route path="/todo/:id" element={<EditTodo/>}/>
     <Route path="/events" element={<EventCalendar/>} />
+
+    <Route path="/habits" element={<HabitsPage/>} />
+    <Route path="/addhabits" element={<AddNewHabits/>}/>
     </Routes>
 
     </>

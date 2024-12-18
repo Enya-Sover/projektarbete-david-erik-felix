@@ -33,6 +33,14 @@
   text-align: center;
 }
 
+.habitBorder {
+  border: 2px solid beige;
+  padding: 10px;
+}
+.borderNewHabit {
+  border: 2px solid beige;
+  padding: 10px;
+}
 .logo {
   height: 6em;
   padding: 1.5em;

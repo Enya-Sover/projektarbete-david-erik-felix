@@ -3,7 +3,7 @@ import { useContext, React } from "react";
 import { LoginContext } from "../context/LoginContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { faTachometerAverage } from "@fortawesome/free-solid-svg-icons";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoggedInPage = () => {
   let { greetings } = useContext(CitatContext);
@@ -86,6 +86,8 @@ const LoggedInPage = () => {
           </li>
         </ul>
       </footer>
+      <button><Link to="/habits">Habits</Link></button>
+      
     </>
   );
 };
