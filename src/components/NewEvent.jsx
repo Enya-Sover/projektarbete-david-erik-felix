@@ -19,7 +19,6 @@ const NewEvent = () => {
   const createNewEvent = () => {
     if (!name || !start || !end) {
       alert("Please fill in all fields!");
-      return;
     }
   
     const newEvent = {
