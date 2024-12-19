@@ -11,43 +11,44 @@ const NewEvent = () => {
   } = useContext(LoginContext);
 
   const [name, setName] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [endTime, setEndTime] = useState("");
+  const [start, setStart] = useState("")
+  const [end, setEnd] = useState("")
 
  
 
   const createNewEvent = () => {
+    if (!name || !start || !end) {
+      alert("Please fill in all fields!");
+    }
+  
     const newEvent = {
       id: Date.now(),
       name: name,
-      start: `${startDate}T${startTime}`,
-      end: `${endDate}T${endTime}`,
+      start: start,
+      end: end,
     };
-
-    if (!startTime || !startDate || !endTime || !name) {
-      alert("Please fill in all fields!");
-      return;
-    }
-
-    const updateUserData = {
+  
+    const updatedUserData = {
       ...currentUserData,
       events: [...currentUserData?.events, newEvent],
     };
-
+  
     const updatedUsers = regUser.map((user) =>
-      user.userName === currentUser ? updateUserData : user
+      user.userName === currentUser ? updatedUserData : user
     );
+  
     setRegUser(updatedUsers);
-    setCurrentUserData(updateUserData);
-
+    setCurrentUserData(updatedUserData);
+  
     alert("Event created successfully");
+    setName("");
+    setStart("");
+    setEnd("");
   };
 
   return (
     <div className="create-event-container">
-      <label htmlFor="name">
+      <label>
         {"Title: "}
         <input
           type="text"
@@ -57,28 +58,27 @@ const NewEvent = () => {
         />
       </label>
 
-      <label htmlFor="startDate">
-      {"Start date: "}
-        <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-      </label>
-
-      <label htmlFor="endDate">
-      {"End date: "}
-        <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
-      </label>
-
-      <label htmlFor="startTime">
-        {"Starts at: "}
-        <input type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} />
-      </label>
-
-      <label htmlFor="endTime">
-        {"Ends at: "}
-        <input type="time" value={endTime} onChange={(e) => setEndTime(e.target.value)} />
-      </label>
-
-      <button onClick={createNewEvent}> Create event </button>
-    </div>
+      <br />
+  <label>
+    {"Start: "}
+    <input
+      type="datetime-local"
+      value={start}
+      onChange={(e) => setStart(e.target.value)}
+    />
+  </label>
+  <br />
+  <label>
+    {"End: "}
+    <input
+      type="datetime-local"
+      value={end}
+      onChange={(e) => setEnd(e.target.value)}
+    />
+  </label>
+  <br />
+  <button onClick={createNewEvent}>Create event</button>
+</div>
   );
 };
 
