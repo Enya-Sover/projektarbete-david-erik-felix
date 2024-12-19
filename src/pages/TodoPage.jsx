@@ -5,6 +5,7 @@ import { LoginContext } from "../context/LoginContext";
 import { Link } from "react-router-dom";
 import AddTodoItem from "../components/AddTodoItem";
 
+
 const TodoPage = () => {
   const {
     currentUser,
@@ -21,8 +22,10 @@ const TodoPage = () => {
 
   return (
     <>
+    <div className="greeting-container">
       <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
       <p>What would you like to do today?</p>
+      </div>
       <AddTodoItem />
       <span>Filter:</span>
       <select
@@ -43,6 +46,20 @@ const TodoPage = () => {
         <option value="work">Work</option>
       </select>
       <select
+            name=""
+            id=""
+            onChange={(e) => setDeadlineEstimation(e.target.value)}
+          >
+            <option value="sortBy">Sort by</option>
+            <option value="deadline">Deadline</option>
+            <option value="estimation">Time estimation</option>
+          </select>
+          <select name="" id="" onChange={(e)=> setRisingFalling(e.target.value)}>
+            <option value="order">Order</option>
+            <option value="rising">Rising</option>
+            <option value="falling">Falling</option>
+          </select>
+          <select
         name="completeFilter"
         onChange={(e) => {
           if (e.target.value === "") {
@@ -58,23 +75,12 @@ const TodoPage = () => {
         <option value="true">Complete</option>
         <option value="false">Not complete</option>
       </select>
+      <main>
+      
       <div className="todos">
         <div className="notCompletedTodos">
           <h2>Not completed todos:</h2>
-          <select
-            name=""
-            id=""
-            onChange={(e) => setDeadlineEstimation(e.target.value)}
-          >
-            <option value="sortBy">Sort by</option>
-            <option value="deadline">Deadline</option>
-            <option value="estimation">Time estimation</option>
-          </select>
-          <select name="" id="" onChange={(e)=> setRisingFalling(e.target.value)}>
-            <option value="order">Order</option>
-            <option value="rising">Rising</option>
-            <option value="falling">Falling</option>
-          </select>
+          
 
           {currentUserData?.todos.sort((a,b)=>{
             if (risingFalling === 'rising'  && deadlineEstimation === 'estimation'){
@@ -109,7 +115,6 @@ const TodoPage = () => {
         </div>
         <div className="completedTodos">
           <h2>Completed todos:</h2>
-          <br />
           {currentUserData?.todos.sort((a,b)=>{
             if (risingFalling === 'rising'  && deadlineEstimation === 'estimation'){
               return a.estimation - b.estimation 
@@ -155,6 +160,7 @@ const TodoPage = () => {
             ))}
         </div>
       </div>
+      </main>
       <br />
       <Link to="/" onClick={()=> setCurrentUser(null)}>Log out</Link>
       <Link to="/loggedin">Go to home</Link>

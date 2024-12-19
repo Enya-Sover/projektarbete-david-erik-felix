@@ -4,13 +4,18 @@
 
 }
 
-.todos{
-  display: flex;
 
-}
 .todo{
-  border: 2px solid blue;
-  margin: 20px
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #eef2f7;
+  border: 2px solid #eceff2;
+  box-shadow: black;
 }
 #errorMessage{
   color: red;

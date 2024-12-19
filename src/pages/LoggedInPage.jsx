@@ -14,10 +14,7 @@ const LoggedInPage = () => {
     capitalizeFirstLetter,
   } = useContext(LoginContext);
   const navigate = useNavigate();
-  const handleLogOut = () => {
-    setCurrentUser(null);
-    navigate("/");
-  };
+  
 
   const today = new Date()
 
@@ -27,18 +24,7 @@ const LoggedInPage = () => {
 
   return (
     <>
-      <header className="header">
-        <img src="./src/assets/Logo.jpg" alt="logo" className="logo-container"/>
-        <nav>
-        <Link to="/loggedin">Start</Link>
-        <Link to="/todo">Todos</Link>
-        <Link to="/habits">Habits</Link>
-        <Link to="/events">Events</Link>
-      </nav>
-      <div className="btn-container">
-      <button onClick={handleLogOut}>Log out</button>
-      </div>
-      </header>
+      
       <div className="greeting-container">
       <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
       <p className="quote">Quote of the day: {greetings ? greetings : 'Gandi has spoken'}</p>

@@ -12,6 +12,9 @@
   border: 2px solid #eceff2;
   box-shadow: black;
 }
+.todos{
+  display: flex;
+}
 
 .todo-container ul {
   background-color: #e2e6eb;
