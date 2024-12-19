@@ -24,6 +24,7 @@ const LoggedInPage = () => {
   const threeTodos = currentUserData.todos.filter(todo => todo.title !== '' && !todo.completed).reverse().slice(0,3).map((todo) => todo);
   const threeHabits = currentUserData.habits.reverse().sort((a, b) => b.repetitions - a.repetitions).slice(0, 3)
   const threeEvents = currentUserData.events.filter(event=> new Date(event.start) > today && event.id).sort((a, b) => new Date(a.start) - new Date(b.start) ).slice(-3)
+
   return (
     <>
       <header className="header">
@@ -48,7 +49,7 @@ const LoggedInPage = () => {
       <h2>Your 3 latest added todos:</h2>
 
       <ul>
-        {threeTodos > 0 ? threeTodos.map((todo) => {
+        {threeTodos.length > 0 ? threeTodos.map((todo) => {
           return (
               <li key ={todo.title}>
                 <b>Title:</b> {capitalizeFirstLetter(todo.title)}
