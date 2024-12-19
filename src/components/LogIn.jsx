@@ -20,6 +20,7 @@ const LogIn = () => {
         localStorage.setItem("currentUser", JSON.stringify(requestUser.userName))
       navigate("/loggedin");
       setIsUserLoggedIn(true);
+      window.location.reload()
     } else {
       setError("Wrong input!");
     }

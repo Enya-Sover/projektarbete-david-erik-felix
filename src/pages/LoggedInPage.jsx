@@ -20,15 +20,15 @@ const LoggedInPage = () => {
 
   const today = new Date()
 
-  const threeTodos = currentUserData.todos.filter(todo => todo.title !== '').reverse().slice(0,3).map((todo) => todo);
+  const threeTodos = currentUserData.todos.filter(todo => todo.title !== '' && !todo.completed).reverse().slice(0,3).map((todo) => todo);
   const threeHabits = currentUserData.habits.reverse().sort((a, b) => b.repetitions - a.repetitions).slice(0, 3)
-  const threeEvents = currentUserData.events.sort((a, b) => new Date(b.start) - new Date(a.start)).slice(-3)
+  const threeEvents = currentUserData.events.filter(event=> new Date(event.start) > today && event.id).sort((a, b) => new Date(b.start) - new Date(a.start) ).slice(-3)
   return (
     <>
       <header>
         <h1>Welome {capitalizeFirstLetter(currentUser)}</h1>
       </header>
-      <p>{greetings}</p>
+      <p>Quote of the day: {greetings}</p>
 
       <h2>Your 3 latest added todos:</h2>
 

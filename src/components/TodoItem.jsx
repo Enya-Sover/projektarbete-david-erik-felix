@@ -29,7 +29,7 @@ const TodoItem = ({ todo, index }) => {
 
   return (
     <div key={index} className="todo">
-     <Link to={`/todo/${todo.id}`}> <h3>Title: {capitalizeFirstLetter(todo.title)}</h3></Link>
+     <h3>Title: {capitalizeFirstLetter(todo.title)}</h3>
         <p>Category: {capitalizeFirstLetter(todo.category)}</p>
       <p>
         Status: {`${todo.completed ? "Complete" : "Not complete"}`}
@@ -38,6 +38,7 @@ const TodoItem = ({ todo, index }) => {
           checked={todo.completed}
           onChange={toggleCompleted}
         ></input>
+        <Link to={`/todo/${todo.id}`}> <button>Edit</button></Link>
       </p>
       
     </div>

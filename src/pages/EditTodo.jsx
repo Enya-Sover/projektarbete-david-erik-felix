@@ -135,12 +135,14 @@ const EditTodo = () => {
         <p onClick={editTitle}>Title: {capitalizeFirstLetter(todo.title)}<button><FontAwesomeIcon icon={faPen} /> 
 </button></p>
       ) : (
-        <input
-          onKeyDown={titleEnter}
-          type="text"
-          placeholder="Title"
-          onChange={(e) => setNewTitle(e.target.value)}
-        ></input>
+        <label>
+          <input
+            onKeyDown={titleEnter}
+            type="text"
+            placeholder="Title"
+            onChange={(e) => setNewTitle(e.target.value)}
+          ></input> Press enter to save
+        </label>
       )}
 
       {!descriptionClicked ? (
@@ -149,36 +151,43 @@ const EditTodo = () => {
           <button><FontAwesomeIcon icon={faPen} /> 
           </button></p>
       ) : (
-        <input
-          onKeyDown={descriptionEnter}
-          type="text"
-          placeholder="Description"
-          onChange={(e) => setNewDescription(e.target.value)}
-        ></input>
+        <label>
+          <input
+            onKeyDown={descriptionEnter}
+            type="text"
+            placeholder="Description"
+            onChange={(e) => setNewDescription(e.target.value)}
+          ></input>Press enter to save
+
+        </label>
       )}
 
       {!estimateClicked ? (
         <p onClick={editEst}>Estemated time: {todo.estimation} minutes <button><FontAwesomeIcon icon={faPen} /> 
 </button></p>
-      ) : (
+      ) : (<label>
         <input
         onKeyDown={estimateEnter}
           type="text"
           placeholder="Estemate"
           onChange={(e) => setNewEstimate(e.target.value)}
-        ></input>
+        ></input>Press enter to save
+
+      </label>
       )}
 
       {!deadlineClicked ? (
         <p onClick={editdead}>Deadline: {todo.deadline}<button><FontAwesomeIcon icon={faPen} /> 
 </button></p>
       ) : (
-        <input
-        onKeyDown={deadEnter}
-          type="date"
-          placeholder="Deadline"
-          onChange={(e) => setNewDeadline(e.target.value)}
-        ></input>
+        <label>
+          <input
+          onKeyDown={deadEnter}
+            type="date"
+            placeholder="Deadline"
+            onChange={(e) => setNewDeadline(e.target.value)}
+          ></input> Press enter to save
+        </label>
       )}
 
       <p>
