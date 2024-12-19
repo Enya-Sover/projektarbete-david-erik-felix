@@ -15,37 +15,54 @@ const EventCalendar = () => {
     currentUserData,
   } = useContext(LoginContext);
 
-  const [filter, setFilter] = useState("none"); 
+  const [filter, setFilter] = useState("none");
+
   if (!currentUserData) {
     window.location.reload();
     return <p>Please log in to see your calendar.</p>;
   }
 
-  const now = new Date();
+  const now = new Date(); // skapar en ny instans av dagens datum
 
   // filterfunktioner
 
   const sortUpcomingEvents = currentUserData?.events
     ?.filter((event) => new Date(event.start) > now)
+    // konverterar datum-strängen till ett date-objekt. Om startdatum för event är senare än dagens datum, läggs det i listan.
     .sort((a, b) => new Date(a.start) - new Date(b.start));
+  // sorterar listan med framtida event i stigande ordning baserat på deras startdatum
+  // a placeras före b om resultatet är negativt
+  // b placeras före a om resultatet är positivt
+  // ser till att de närmaste framtida eventen kommer först i listan.
 
   const sortPastEvents = currentUserData?.events
     ?.filter((event) => new Date(event.start) <= now)
     .sort((a, b) => new Date(b.start) - new Date(a.start));
 
+    // samma logik som för upcomming events, men spegelvänt, 
+    // eventet inkluderas i listan om startdatum är tidigare än dagens datum
+    // de mest nyligen avslutade eventen kommer först i listan.
 
-    // ta bort event
+
+  // ta bort event
 
   const removeEvent = (id) => {
-    const updatedEvents = currentUserData.events.filter((event) => event.id !== id);
+    const updatedEvents = currentUserData.events.filter(
+      (event) => event.id !== id
+    );
     const updatedUserData = { ...currentUserData, events: updatedEvents };
     setCurrentUserData(updatedUserData);
     setRegUser(
-      regUser.map((user) => (user.userName === currentUserData.userName ? updatedUserData : user))
+      regUser.map((user) =>
+        user.userName === currentUserData.userName ? updatedUserData : user
+      )
     );
   };
 
-  // redigera event 
+// skapar en ny lista enbart med de event som inte har samma ID som det event som tas bort
+// om event.id === id, exkluderas det eventet från listan.
+
+  // redigera event
 
   const editEvent = (updatedEvent) => {
     const updatedEvents = currentUserData.events.map((event) =>
@@ -54,9 +71,17 @@ const EventCalendar = () => {
     const updatedUserData = { ...currentUserData, events: updatedEvents };
     setCurrentUserData(updatedUserData);
     setRegUser(
-      regUser.map((user) => (user.userName === currentUserData.userName ? updatedUserData : user))
+      regUser.map((user) =>
+        user.userName === currentUserData.userName ? updatedUserData : user
+      )
     );
   };
+
+// event.id === updatedEvent.id:
+// jämför ID:t för varje event med det uppdaterade eventets ID.
+// om ID:t matchar:
+// så byts det gamla eventet mot det nya (updatedEvent)
+// sedan uppdateras användadatat och användarlistan med den uppdaterade lista 
 
   return (
     <div>
@@ -76,9 +101,7 @@ const EventCalendar = () => {
         </select>
       </div>
 
-      {/* Visar både kommande och tidigare händelser med möjlighet att filtrera bort vissa */}
       <div className="events-container">
-        {/* Upcoming Events */}
         {filter !== "past" && (
           <div className="new-events-container">
             <h3>Upcoming Events:</h3>
@@ -95,7 +118,6 @@ const EventCalendar = () => {
           </div>
         )}
 
-        {/* Past Events */}
         {filter !== "upcoming" && (
           <div className="past-events-container">
             <h3>Past Events:</h3>
