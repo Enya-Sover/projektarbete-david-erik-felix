@@ -33,13 +33,13 @@ const LoggedInPage = () => {
       <h2>Your 3 latest added todos:</h2>
 
       <ul>
-        {threeTodos.map((todo) => {
+        {threeTodos > 0 ? threeTodos.map((todo) => {
           return (
               <li key ={todo.title}>
                 <b>Title:</b> {capitalizeFirstLetter(todo.title)}
               </li>
           );
-        })}
+        }): <p>No todos available</p>}
       </ul>
       <p>
         Click<Link to="/todo"> here </Link>to se all todos
