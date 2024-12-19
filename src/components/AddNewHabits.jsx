@@ -13,7 +13,7 @@ let AddNewHabits = () => {
 
     let addHabit = () => {
         if (!currentUser) {
-            alert("Inte inloggad, skapa nytt eller logga in")    
+            alert("Not loged in. Please log in!")    
         }
 
         let newHabitObject = {
