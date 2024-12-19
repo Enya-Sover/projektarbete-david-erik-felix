@@ -8,8 +8,8 @@
   margin: 20px;
   padding: 15px;
   border-radius: 15px;
-  background-color: #eef2f7;
-  border: 2px solid #eceff2;
+  background-color: #f6faff;
+  border: 2px solid rgb(242, 246, 249);
   box-shadow: black;
 }
 .todos{
@@ -17,19 +17,19 @@
 }
 
 .todo-container ul {
-  background-color: #e2e6eb;
+  background-color: #e9f1fb;
   padding: 20px;
   border-radius: 15px;
 }
 
 .habits-container ul {
-  background-color: #e2e6eb;
+  background-color: #e9f1fb;
   padding: 20px;
   border-radius: 15px;
 }
 
 .events-container ul {
-  background-color: #e2e6eb;
+  background-color: #e9f1fb;
   padding: 20px;
   border-radius: 15px;
 }
