@@ -10,9 +10,9 @@ export function CitatContextProvider ({children}){
 
     useEffect(() => {
         let getGreetings = async () => {
-            let response = await fetch('https://api.quotable.io/random')
+            let response = await fetch('https://api.quotable.io/quotes/random')
             let json = await response.json()
-            setGreetings(json)
+            setGreetings(json[0].content)
         }
         getGreetings()
     }, [])

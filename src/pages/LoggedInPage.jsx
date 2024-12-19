@@ -28,7 +28,7 @@ const LoggedInPage = () => {
       <header>
         <h1>Welome {capitalizeFirstLetter(currentUser)}</h1>
       </header>
-      <p>"{greetings.content}" API error </p>
+      <p>"{greetings}"</p>
 
       <h2>Your 3 latest added todos:</h2>
 
