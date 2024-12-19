@@ -26,10 +26,17 @@ const LoggedInPage = () => {
   return (
     <>
       <header>
-        <h1>Welome {capitalizeFirstLetter(currentUser)}</h1>
+        <h1>Welcome {capitalizeFirstLetter(currentUser)}</h1>
       </header>
-      <p>Quote of the day: {greetings}</p>
 
+      <nav>
+        <Link to="/loggedin">Start</Link>
+        <Link to="/todo">Todos</Link>
+        <Link to="/habits">Habits</Link>
+        <Link to="/events">Events</Link>
+      </nav>
+      <p>Quote of the day: {greetings ? greetings : 'Gandi has spoken'}</p>
+      <main>
       <h2>Your 3 latest added todos:</h2>
 
       <ul>
@@ -42,7 +49,7 @@ const LoggedInPage = () => {
         }): <p>No todos available</p>}
       </ul>
       <p>
-        Click<Link to="/todo"> here </Link>to se all todos
+        Click<Link to="/todo"> here </Link>to see all todos
       </p>
 
       <h2>3 Habits with most repetitions:</h2>
@@ -54,7 +61,7 @@ const LoggedInPage = () => {
           )) : 
           <p>No habits available</p>}
       </ul>
-      <p>Click<Link to="/habits"> here </Link>to se all habits
+      <p>Click<Link to="/habits"> here </Link>to see all habits
       </p>
 
       <h2>3 Upcoming events:</h2>
@@ -66,9 +73,9 @@ const LoggedInPage = () => {
           )) : 
           <p>No events available</p>}
       </ul>
-      <p>Click<Link to="/events"> here </Link>to se all events
+      <p>Click<Link to="/events"> here </Link>to see all events
       </p>
-
+      </main>
       <button onClick={handleLogOut}>Log out</button>
 
       <footer>

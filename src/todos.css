@@ -1,0 +1,25 @@
+
+.completedTodos{
+  color: green;
+
+}
+
+.todos{
+  display: flex;
+
+}
+.todo{
+  border: 2px solid blue;
+  margin: 20px
+}
+#errorMessage{
+  color: red;
+  font-weight: 800;
+}
+
+.addTodo{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+

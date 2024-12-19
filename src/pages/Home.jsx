@@ -9,7 +9,7 @@ const Home = () => {
     const {currentUser} = useContext(LoginContext)
 
     return (<>
-        <h2>Home</h2>
+        <h2>Login page</h2>
         <LogIn />
         
 
