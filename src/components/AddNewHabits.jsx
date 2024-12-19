@@ -40,7 +40,7 @@ let AddNewHabits = () => {
             <label>Habit: </label>
             <input type="text" placeholder="..." value={newHabit} onChange={(e) => setNewHabit(e.target.value)}/>
             
-            <label>priority: 
+            <label>Priority: 
             <select name="dropdown" value={newPriority} onChange={(e) => setNewPriority(e.target.value)}>
                 <option value="">......</option>
                 <option value="high">High</option>
@@ -49,7 +49,7 @@ let AddNewHabits = () => {
             </select>
             </label>
             
-            <label>repetition: 
+            <label>Repetition: 
                 <input type="number" value={newRepetition} placeholder="1" min="1" onChange={(e) => setNewRepetition(e.target.value)} />
             </label>
             <br />
@@ -59,7 +59,7 @@ let AddNewHabits = () => {
             {currentUserData?.habits?.map((h) => (
                 <div className="borderNewHabit">
                 <p key={h.id}>
-                    Habit: {h.title} | Priority: {h.priority} | Repetitions: {h.repetitions} ggr
+                  <p> Habit: {h.title} </p> <p>  Priority: {h.priority} </p> <p> Repetitions: {h.repetitions} times </p> 
                 </p>
                 </div>
             ))}
