@@ -22,7 +22,7 @@ const LoggedInPage = () => {
 
   const threeTodos = currentUserData.todos.filter(todo => todo.title !== '' && !todo.completed).reverse().slice(0,3).map((todo) => todo);
   const threeHabits = currentUserData.habits.reverse().sort((a, b) => b.repetitions - a.repetitions).slice(0, 3)
-  const threeEvents = currentUserData.events.filter(event=> new Date(event.start) > today && event.id).sort((a, b) => new Date(b.start) - new Date(a.start) ).slice(-3)
+  const threeEvents = currentUserData.events.filter(event=> new Date(event.start) > today && event.id).sort((a, b) => new Date(a.start) - new Date(b.start) ).slice(-3)
   return (
     <>
       <header>
