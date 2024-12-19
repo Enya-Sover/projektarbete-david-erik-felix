@@ -20,15 +20,15 @@ const LoggedInPage = () => {
 
   const today = new Date()
 
-  const threeTodos = currentUserData.todos.slice(-3).map((todo) => todo);
+  const threeTodos = currentUserData.todos.filter(todo => todo.title !== '').reverse().slice(0,3).map((todo) => todo);
+  const threeHabits = currentUserData.habits.reverse().sort((a, b) => b.repetitions - a.repetitions).slice(0, 3)
   const threeEvents = currentUserData.events.sort((a, b) => new Date(b.start) - new Date(a.start)).slice(-3)
-  const threeHabits = currentUserData.habits.sort((a, b) => b.repetitions - a.repetitions).slice(-3)
   return (
     <>
       <header>
         <h1>Welome {capitalizeFirstLetter(currentUser)}</h1>
       </header>
-      <p>"{greetings.content}" API error </p>
+      <p>{greetings}</p>
 
       <h2>Your 3 latest added todos:</h2>
 
@@ -66,7 +66,7 @@ const LoggedInPage = () => {
           )) : 
           <p>No events available</p>}
       </ul>
-      <p>Click<Link to="/events"> here </Link>to se all habits
+      <p>Click<Link to="/events"> here </Link>to se all events
       </p>
 
       <button onClick={handleLogOut}>Log out</button>

@@ -23,7 +23,7 @@ let HabitsPage = () => {
     let handleRepetitions = (id, a) => {
       let handleHabits = currentUserData.habits.map((habit) => habit.id === id ?
     { ...habit, repetitions: a === "increase" ? habit.repetitions + 1 : Math.max(habit.repetitions -1, 0)} : habit)
-  
+      
     setCurrentUserData({ ...currentUserData, habits: handleHabits}) 
     }
     
