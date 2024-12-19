@@ -121,6 +121,7 @@ let HabitsPage = () => {
         <Link to="/addhabits">
           <button>Add a new Habit</button>
         </Link>
+        <Link to="/loggedin">Back to Home page</Link>
       </footer>
     </div>
   )

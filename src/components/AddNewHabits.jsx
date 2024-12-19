@@ -68,6 +68,8 @@ let AddNewHabits = () => {
             <Link to="/habits">Back to your habits</Link>
             <br />
             <Link to="/">Logga in</Link>
+            <br />
+            <Link to="/loggedin">Back to Home page</Link>
             </footer>
         </div>
     )
