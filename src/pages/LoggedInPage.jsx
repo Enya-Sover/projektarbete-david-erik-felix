@@ -5,7 +5,7 @@ import { LoginContext } from "../context/LoginContext";
 import { Link, useNavigate } from "react-router-dom";
 
 const LoggedInPage = () => {
-  let { greetings } = useContext(CitatContext);
+  let { greetings, greetings2 } = useContext(CitatContext);
   const {
     currentUser,
     setCurrentUser,
@@ -29,14 +29,14 @@ const LoggedInPage = () => {
   const threeEvents = currentUserData.events
     .filter((event) => new Date(event.start) > today && event.id)
     .sort((a, b) => new Date(a.start) - new Date(b.start))
-    .slice(-3);
+    .slice(-3); 
 
   return (
     <>
       <div className="greeting-container">
         <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
         <p className="quote">
-          <b>Quote of the day:</b> {greetings ? greetings : "Gandi has spoken"}
+          <b>Quote of the day:</b> {greetings ? greetings : greetings2 ? greetings2 :"Gandhi has spoken"}
         </p>
       </div>
       <main>
