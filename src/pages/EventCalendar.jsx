@@ -86,8 +86,8 @@ const EventCalendar = () => {
 // sedan uppdateras användadatat och användarlistan med den uppdaterade lista 
 
   return (
-    <div>
-      <h2>Event Calendar</h2>
+    <div className="event-calendar-container">
+      <h2 className="event-title">Event Calendar</h2>
       <NewEvent />
 
       <div className="filter-dropdown">
@@ -103,7 +103,7 @@ const EventCalendar = () => {
         </select>
       </div>
 
-      <div className="events-container">
+      <div className="events-container2">
         {filter !== "past" && (
           <div className="new-events-container">
             <h3>Upcoming Events:</h3>
