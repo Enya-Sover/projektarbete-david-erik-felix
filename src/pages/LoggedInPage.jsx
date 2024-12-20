@@ -57,7 +57,7 @@ const LoggedInPage = () => {
             )}
           </ul>
           <p>
-            <Link to="/todo">See all todos</Link>
+            <Link className="link-style" to="/todo">See all todos</Link>
           </p>
         </div>
 

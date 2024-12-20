@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { LoginContext } from "../context/LoginContext"
 
+
 let AddNewHabits = () => {
     let { regUser, setRegUser, currentUserData, setCurrentUserData, currentUser} = useContext(LoginContext)
 
@@ -57,7 +58,7 @@ let AddNewHabits = () => {
             
             <h2>Your Habits</h2>
             {currentUserData?.habits?.map((h) => (
-                <div className="borderNewHabit" key={h.id }>
+                <div className="add-habit-container" key={h.id }>
                 <p key={h.id}>
                   Habit: {h.title} Priority: {h.priority} Repetitions: {h.repetitions} times 
                 </p>

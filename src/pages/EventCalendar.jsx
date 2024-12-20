@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, } from "react";
 import { LoginContext } from "../context/LoginContext";
 import NewEvent from "../components/newEvent";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FutureEvent from "../components/FutureEvent";
 import PastEvents from "../components/PastEvents";
 import "../events.css";
@@ -16,6 +16,7 @@ const EventCalendar = () => {
   } = useContext(LoginContext);
 
   const [filter, setFilter] = useState("none");
+  const navigate = useNavigate();
 
   if (!currentUserData) {
     window.location.reload();
@@ -82,6 +83,12 @@ const EventCalendar = () => {
   // så byts det gamla eventet mot det nya (updatedEvent)
   // sedan uppdateras användadatat och användarlistan med den uppdaterade lista
 
+  // enkel back funktion
+
+  const handleBackClick = () => {
+    navigate("/loggedin")
+  };
+
   return (
     <div className="event-calendar-container">
       <h2 className="event-title">Event Calendar</h2>
@@ -134,8 +141,8 @@ const EventCalendar = () => {
           )}
         </div>
 
-
-      <Link to="/loggedin">Back</Link>
+          <button className="back-button-event" onClick={handleBackClick}> Back </button>
+      
     </div>
   );
 };

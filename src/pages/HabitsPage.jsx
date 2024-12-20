@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { LoginContext } from "../context/LoginContext";
 
+
 let HabitsPage = () => {
   let { currentUser, currentUserData, setCurrentUserData, regUser, setRegUser } = useContext(LoginContext)
 
@@ -107,7 +108,7 @@ let HabitsPage = () => {
             return 0
           })
           .map((h) => (
-            <div className="habitBorder" key={h.id}>
+            <div className="show-container" key={h.id}>
               <p>Habit: {h.title}</p> <p>Priority: {h.priority}</p> <p>Repetitions: {h.repetitions} times</p>
               <button onClick={() => deleteHabit(h.id)}>Delete</button>
               <button onClick={() => handleRepetitions(h.id, "increase")}> + </button>

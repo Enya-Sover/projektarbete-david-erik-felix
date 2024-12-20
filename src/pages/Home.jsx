@@ -8,13 +8,13 @@ import { LoginContext } from "../context/LoginContext";
 const Home = () => {
     const {currentUser} = useContext(LoginContext)
 
-    return (<>
-        <h2>Login page</h2>
+    return (
+        <div className="home-container">
         <LogIn />
         
 
         <p>Not a user? Click <Link to="/register">here</Link> to register</p>
-        </>)
+        </div>)
 }
 
 export default Home

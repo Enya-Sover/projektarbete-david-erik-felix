@@ -53,8 +53,6 @@ main {
     
 }
 
-
-
 .quote {
   /* display: flex;
   justify-content: center; */
@@ -72,8 +70,7 @@ main {
     align-items: center;
     justify-content: space-evenly;
     gap: 270px;
-    min-height: 50px;
-    
+    min-height: 50px; 
 }
 
 .logo-container {
@@ -81,12 +78,31 @@ main {
   align-items: start;
   margin: 10px;
   border-radius: 10px;
-  width: 70px
-  
-  
+  width: 70px;
 }
+
 .btn-container {
   display: flex;
+}
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+ 
+}
+
+.log-in-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+.input-login-container {
+
+  
 }
 
 a {
@@ -122,6 +138,7 @@ header{
     justify-content: center;
     align-items: center;
 }
+
 nav{
     display: flex;
     align-items: center;
@@ -145,6 +162,20 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
   }
+
+  ul {
+    list-style-type: none; 
+    padding-left: 0; 
+  }
+  
+  ol {
+    list-style-type: none;
+    padding-left: 0; 
+  }
+
+  .link-style {
+    color: rgb(132, 20, 144);
+  }
   
   button:hover {
     background-color: #c2c8cf;
@@ -161,13 +192,5 @@ button {
     }
   }
 
-  ul {
-    list-style-type: none; 
-    padding-left: 0; 
-  }
-  
-  ol {
-    list-style-type: none;
-    padding-left: 0; 
-  }
+ 
   
