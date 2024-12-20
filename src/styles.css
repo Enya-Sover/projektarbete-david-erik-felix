@@ -18,7 +18,7 @@
   display: flex;
 }
 a:hover{
-  color: blue;
+  color: darkblue;
 }
 
 .todo-container ul {
@@ -106,7 +106,7 @@ main {
 }
 
 a {
-  color: #161718;
+  color: blue;
   text-decoration: none;
 }
 
@@ -114,6 +114,9 @@ nav a {
   font-size: large;
   color: white;
   font-weight: bold;
+}
+nav a:hover{
+  color: blue;
 }
 
 body{
@@ -171,10 +174,6 @@ button {
   ol {
     list-style-type: none;
     padding-left: 0; 
-  }
-
-  .link-style {
-    color: rgb(132, 20, 144);
   }
   
   button:hover {
