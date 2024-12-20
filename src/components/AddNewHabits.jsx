@@ -10,7 +10,6 @@ let AddNewHabits = () => {
     let [newPriority, setNewPriority] = useState("")
     let [newRepetition, setNewRepetition] = useState("")
 
-    
 
     let addHabit = () => {
         if (!currentUser) {
@@ -40,17 +39,14 @@ let AddNewHabits = () => {
             <h1>Add a new Habit</h1>
             <div className="input-habit">
             <input type="text" placeholder="Habit" value={newHabit} onChange={(e) => setNewHabit(e.target.value)}/>
-            
-            
+                 
             <select name="dropdown" value={newPriority} onChange={(e) => setNewPriority(e.target.value)}>
                 <option value="">Priority</option>
-                <option value="high">High</option>
-                <option value="mid">Mid</option>
-                <option value="low">Low</option>
+                <option value="High">High</option>
+                <option value="Lid">Mid</option>
+                <option value="Low">Low</option>
             </select>
             
-            
-        
                 <input type="number" value={newRepetition} placeholder="Number of Repetitions" min="1" onChange={(e) => setNewRepetition(e.target.value)} />
                 </div>
             <div className="add-btn">
@@ -60,11 +56,10 @@ let AddNewHabits = () => {
             <div className="show-add">
             {currentUserData?.habits?.map((h) => (
                 <div className="add-habit-container" key={h.id }>
-                <p className="add-habit-data" key={h.id}>
+                <p className="add-habit-data">
                   Habit: {h.title} Priority: {h.priority}  Repetitions: {h.repetitions} times 
                 </p>
-                </div>
-                
+                </div>            
             ))}
             </div>
             <footer>
