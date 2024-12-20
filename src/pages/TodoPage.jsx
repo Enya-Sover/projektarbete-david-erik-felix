@@ -29,6 +29,7 @@ const TodoPage = () => {
 
       
       <aside>
+         
         <AddTodoItem />
         <span>Filter:</span>
         <section className="filter-section">
@@ -54,7 +55,7 @@ const TodoPage = () => {
             id=""
             onChange={(e) => setDeadlineEstimation(e.target.value)}
           >
-            <option value="sortBy">Sort by</option>
+            <option value="sortBy">Sort by category</option>
             <option value="deadline">Deadline</option>
             <option value="estimation">Time estimation</option>
           </select>
@@ -63,7 +64,7 @@ const TodoPage = () => {
             id=""
             onChange={(e) => setRisingFalling(e.target.value)}
           >
-            <option value="order">Order</option>
+            <option value="order">Sort by order</option>
             <option value="rising">Rising</option>
             <option value="falling">Falling</option>
           </select>
@@ -80,7 +81,7 @@ const TodoPage = () => {
               }
             }}
           >
-            <option value="">All</option>
+            <option value="">Show complete</option>
             <option value="true">Complete</option>
             <option value="false">Not complete</option>
           </select>

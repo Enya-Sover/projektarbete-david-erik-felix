@@ -6,7 +6,6 @@ import FutureEvent from "../components/FutureEvent";
 import PastEvents from "../components/PastEvents";
 import "../events.css";
 
-
 const EventCalendar = () => {
   const {
     regUser,
@@ -21,7 +20,6 @@ const EventCalendar = () => {
   if (!currentUserData) {
     window.location.reload();
     return <p>Please log in to see your calendar.</p>;
-
   }
 
   const now = new Date(); // skapar en ny instans av dagens datum
@@ -41,10 +39,9 @@ const EventCalendar = () => {
     ?.filter((event) => new Date(event.start) <= now)
     .sort((a, b) => new Date(b.start) - new Date(a.start));
 
-    // samma logik som för upcomming events, men spegelvänt, 
-    // eventet inkluderas i listan om startdatum är tidigare än dagens datum
-    // de mest nyligen avslutade eventen kommer först i listan.
-
+  // samma logik som för upcomming events, men spegelvänt,
+  // eventet inkluderas i listan om startdatum är tidigare än dagens datum
+  // de mest nyligen avslutade eventen kommer först i listan.
 
   // ta bort event
 
@@ -61,8 +58,8 @@ const EventCalendar = () => {
     );
   };
 
-// skapar en ny lista enbart med de event som inte har samma ID som det event som tas bort
-// om event.id === id, exkluderas det eventet från listan.
+  // skapar en ny lista enbart med de event som inte har samma ID som det event som tas bort
+  // om event.id === id, exkluderas det eventet från listan.
 
   // redigera event
 
@@ -79,11 +76,11 @@ const EventCalendar = () => {
     );
   };
 
-// event.id === updatedEvent.id:
-// jämför ID:t för varje event med det uppdaterade eventets ID.
-// om ID:t matchar:
-// så byts det gamla eventet mot det nya (updatedEvent)
-// sedan uppdateras användadatat och användarlistan med den uppdaterade lista 
+  // event.id === updatedEvent.id:
+  // jämför ID:t för varje event med det uppdaterade eventets ID.
+  // om ID:t matchar:
+  // så byts det gamla eventet mot det nya (updatedEvent)
+  // sedan uppdateras användadatat och användarlistan med den uppdaterade lista
 
   return (
     <div>
@@ -103,39 +100,40 @@ const EventCalendar = () => {
         </select>
       </div>
 
-      <div className="events-container">
-        {filter !== "past" && (
-          <div className="new-events-container">
-            <h3>Upcoming Events:</h3>
-            <ul>
-              {sortUpcomingEvents.map((event) => (
-                <FutureEvent
-                  key={event.id}
-                  event={event}
-                  onEdit={editEvent}
-                  onRemove={removeEvent}
-                />
-              ))}
-            </ul>
-          </div>
-        )}
+        <div className="events-container">
+          {filter !== "past" && (
+            <div className="new-events-container">
+              <h3>Upcoming Events:</h3>
+              <ul>
+                {sortUpcomingEvents.map((event) => (
+                  <FutureEvent
+                    key={event.id}
+                    event={event}
+                    onEdit={editEvent}
+                    onRemove={removeEvent}
+                  />
+                ))}
+              </ul>
+            </div>
+          )}
 
-        {filter !== "upcoming" && (
-          <div className="past-events-container">
-            <h3>Past Events:</h3>
-            <ul>
-              {sortPastEvents.map((event) => (
-                <PastEvents
-                  key={event.id}
-                  event={event}
-                  onEdit={editEvent}
-                  onRemove={removeEvent}
-                />
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
+          {filter !== "upcoming" && (
+            <div className="past-events-container">
+              <h3>Past Events:</h3>
+              <ul>
+                {sortPastEvents.map((event) => (
+                  <PastEvents
+                    key={event.id}
+                    event={event}
+                    onEdit={editEvent}
+                    onRemove={removeEvent}
+                  />
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
 
       <Link to="/loggedin">Back</Link>
     </div>

@@ -11,6 +11,8 @@
   background-color: #f6faff;
   border: 2px solid rgb(242, 246, 249);
   box-shadow: black;
+  min-height: 350px;
+  min-width: 350px;
 }
 .todos{
   display: flex;
