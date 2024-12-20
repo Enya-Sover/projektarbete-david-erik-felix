@@ -22,6 +22,7 @@ const LoggedInPage = () => {
     .slice(0, 3)
     .map((todo) => todo);
   const threeHabits = currentUserData.habits
+    .filter((habit) => habit.title !== "")
     .reverse()
     .sort((a, b) => b.repetitions - a.repetitions)
     .slice(0, 3);
@@ -66,12 +67,13 @@ const LoggedInPage = () => {
             {threeHabits.length > 0 ? (
               threeHabits.map(
                 (habit, i) =>
-                  habit.title !== "" && (
+                  habit.title !== '' && (
                     <li key={i}>
                       Title: {capitalizeFirstLetter(habit.title)}. Repetitions:{" "}
                       {habit.repetitions}
                     </li>
-                  ))) : (<p>No habits available</p>)}
+                  ))) : (<p>No habits available</p>
+                  )}
           </ul>
 
           <p>
