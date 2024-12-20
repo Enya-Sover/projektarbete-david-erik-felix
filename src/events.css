@@ -4,9 +4,9 @@
 
 .events-container2 {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: row;
-  gap: 10px;
+  gap: 30px;
   margin-top: 20px;
 }
 
@@ -19,33 +19,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.new-events-container h3,
-.past-events-container h3 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.new-events-container li,
-.past-events-container li {
-  padding: 8px;
-  margin-bottom: 10px;
-  background-color: #fff;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.new-events-container li:hover,
-.past-events-container li:hover {
-  background-color: #f0f0f0;
-}
-
-.past-events-container li {
-  color: #aaa;
-  
+  padding: 20px;
 }
 
 .filter-dropdown {
@@ -81,6 +55,7 @@ button:hover {
 .past-events-container {
   background-color: #f7f7f7;
   border: 1px solid #ccc;
+  gap: 20px;
 }
 
 .new-events-container {
@@ -113,11 +88,63 @@ ol {
 
 .future-item, .past-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-
+  gap: 10px; 
+  margin: 10px;
+  padding: 15px;
 }
+
+
+.new-events-container h3,
+.past-events-container h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.new-events-container li,
+.past-events-container li {
+  padding: 8px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.past-events-container li {
+  background-color: #f7f7f7;
+}
+
+.new-events-container li:hover,
+.past-events-container li:hover {
+  background-color: #f0f0f0;
+}
+
+.past-events-container li {
+  color: #aaa;
+  
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px; 
+  font-size: 5px;
+  gap: 10px;
+}
+
+.edit-buttons button {
+  min-width: 0; 
+  min-height: 0; 
+  padding: 8px;
+  font-size: 13px; 
+}
+
+
 
 
 /* ________________________________________________MEDIAS_____________________________________________________________________ */

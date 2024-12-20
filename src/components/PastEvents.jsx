@@ -26,8 +26,10 @@ const PastEvent = ({ event, onEdit, onRemove }) => {
       <strong>{event.name}</strong> <br />
       Start: {new Date(event.start).toLocaleString()} <br />
       End: {new Date(event.end).toLocaleString()} <br />
+      <div className="edit-buttons">
       <button onClick={handleEdit}>Edit event</button>
       <button onClick={() => onRemove(event.id)}>Remove event</button>
+      </div>
     </li>
   );
 };
