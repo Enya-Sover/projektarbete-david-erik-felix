@@ -83,7 +83,7 @@ const EventCalendar = () => {
   // sedan uppdateras användadatat och användarlistan med den uppdaterade lista
 
   return (
-    <div>
+    <div className="event-calendar-container">
       <h2 className="event-title">Event Calendar</h2>
       <NewEvent />
 
