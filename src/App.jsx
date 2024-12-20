@@ -11,6 +11,8 @@ import AddNewHabits from './components/AddNewHabits'
 import './styles.css'
 import { useContext } from 'react'
 import { LoginContext } from './context/LoginContext'
+import './habits.css'
+
 
 function App() {
 const navigate = useNavigate()
