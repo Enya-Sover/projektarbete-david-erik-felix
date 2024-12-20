@@ -54,7 +54,8 @@ let AddTodoItem = ()=>{
           window.location.reload();
         }
       };
-    return(<div className="addTodo">
+    return(
+    <div className="addTodo">
     <select name="kategori" value={category} onChange={(e) => setCategory(e.target.value)}>
         <option value="">Choose category</option>
         <option value="health">Health</option>
