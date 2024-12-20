@@ -1,4 +1,4 @@
-.add-habit-container, .show-container {
+.show-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,6 +13,21 @@
     max-width: 350px;   
 }
 
+.add-habit-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #f6faff;
+    border: 2px solid rgb(242, 246, 249);
+    box-shadow: black;
+    max-height: 350px;
+    max-width: 350px;
+}
+
 .habitList {
     display: flex;
     justify-content: center;
@@ -20,7 +35,13 @@
     flex-direction: column;
 }
 
-
+.likn-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 20px;
+    
+  }
 .function-btns {
     display: flex;
     flex-direction: row;
@@ -29,24 +50,51 @@
 
 .filter-and-sort, .input-habit {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
+    gap: 10px;
 }
 
 .add-btn {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
 }
 .nav {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.show-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+
+
+select{
+    border-radius: 5px;
+    height: 25px;
+}
+
+input {
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 20px;
+}
+
+input::placeholder {
+    color: black;
+}
+
 h1, h2, h3, footer {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-

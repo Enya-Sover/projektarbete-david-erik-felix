@@ -57,17 +57,18 @@ let AddNewHabits = () => {
             <button  onClick={addHabit}>Add</button>
             </div>
             <h2>Your Habits</h2>
+            <div className="show-add">
             {currentUserData?.habits?.map((h) => (
                 <div className="add-habit-container" key={h.id }>
-                <p key={h.id}>
-                  Habit: {h.title} Priority: {h.priority} Repetitions: {h.repetitions} times 
+                <p className="add-habit-data" key={h.id}>
+                  Habit: {h.title} Priority: {h.priority}  Repetitions: {h.repetitions} times 
                 </p>
                 </div>
+                
             ))}
+            </div>
             <footer>
-            <br />
             <Link to="/habits">Back to your habits</Link>
-            <Link to="/loggedin">Back to Home page</Link>
             </footer>
         </div>
     )
