@@ -2,12 +2,20 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import { LoginContext } from "../context/LoginContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 const EditTodo = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const {currentUserData, currentUser, setRegUser, regUser, setCurrentUserData, capitalizeFirstLetter} = useContext(LoginContext);
+  const {
+    currentUserData,
+    currentUser,
+    setRegUser,
+    regUser,
+    setCurrentUserData,
+    capitalizeFirstLetter,
+  } = useContext(LoginContext);
   const [titleClicked, setTitleClicked] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [descriptionClicked, setDescriptionClicked] = useState(false);
@@ -16,8 +24,6 @@ const EditTodo = () => {
   const [newEstimate, setNewEstimate] = useState("");
   const [deadlineClicked, setDeatLineClicked] = useState(false);
   const [newDeadLine, setNewDeadline] = useState("");
-
-
 
   const todo = currentUserData?.todos.find((t) => t.id === id);
 
@@ -126,14 +132,20 @@ const EditTodo = () => {
     setCurrentUserData(updatedUserData);
   };
 
-
-
   return (
-    <>
-    <h2><i><u>Click to edit:</u></i></h2>
+    <section className="edit-section">
+      <h2>
+        <i>
+          <u>Click to edit:</u>
+        </i>
+      </h2>
       {!titleClicked ? (
-        <p onClick={editTitle}>Title: {capitalizeFirstLetter(todo.title)}<button><FontAwesomeIcon icon={faPen} /> 
-</button></p>
+        <p onClick={editTitle}>
+          Title: {capitalizeFirstLetter(todo.title)}
+          <button>
+            <FontAwesomeIcon icon={faPen} size="xs" />
+          </button>
+        </p>
       ) : (
         <label>
           <input
@@ -141,15 +153,18 @@ const EditTodo = () => {
             type="text"
             placeholder="Title"
             onChange={(e) => setNewTitle(e.target.value)}
-          ></input> Press enter to save
+          ></input>{" "}
+          Press enter to save
         </label>
       )}
 
       {!descriptionClicked ? (
         <p onClick={editDesc}>
           Description: {capitalizeFirstLetter(todo.description)}
-          <button><FontAwesomeIcon icon={faPen} /> 
-          </button></p>
+          <button>
+            <FontAwesomeIcon icon={faPen} size="xs" />
+          </button>
+        </p>
       ) : (
         <label>
           <input
@@ -157,36 +172,46 @@ const EditTodo = () => {
             type="text"
             placeholder="Description"
             onChange={(e) => setNewDescription(e.target.value)}
-          ></input>Press enter to save
-
+          ></input>
+          Press enter to save
         </label>
       )}
 
       {!estimateClicked ? (
-        <p onClick={editEst}>Estemated time: {todo.estimation} minutes <button><FontAwesomeIcon icon={faPen} /> 
-</button></p>
-      ) : (<label>
-        <input
-        onKeyDown={estimateEnter}
-          type="text"
-          placeholder="Estemate"
-          onChange={(e) => setNewEstimate(e.target.value)}
-        ></input>Press enter to save
-
-      </label>
-      )}
-
-      {!deadlineClicked ? (
-        <p onClick={editdead}>Deadline: {todo.deadline}<button><FontAwesomeIcon icon={faPen} /> 
-</button></p>
+        <p onClick={editEst}>
+          Estemated time: {todo.estimation} minutes{" "}
+          <button>
+            <FontAwesomeIcon icon={faPen} size="xs" />
+          </button>
+        </p>
       ) : (
         <label>
           <input
-          onKeyDown={deadEnter}
+            onKeyDown={estimateEnter}
+            type="text"
+            placeholder="Estemate minutes"
+            onChange={(e) => setNewEstimate(e.target.value)}
+          ></input>
+          Press enter to save
+        </label>
+      )}
+
+      {!deadlineClicked ? (
+        <p onClick={editdead}>
+          Deadline: {todo.deadline}
+          <button>
+            <FontAwesomeIcon icon={faPen} size="xs" />
+          </button>
+        </p>
+      ) : (
+        <label>
+          <input
+            onKeyDown={deadEnter}
             type="date"
             placeholder="Deadline"
             onChange={(e) => setNewDeadline(e.target.value)}
-          ></input> Press enter to save
+          ></input>{" "}
+          Press enter to save
         </label>
       )}
 
@@ -198,22 +223,21 @@ const EditTodo = () => {
           onChange={toggleCompleted}
         ></input>
       </p>
-      <p>Category: {capitalizeFirstLetter(todo.category)}
-      <select
-        name="categoryFilter"
-        onChange={categoryChange}>
-        <option value=''>Change category</option>
-        <option value="health">Health</option>
-        <option value="housing">Housing</option>
-        <option value="pleasure">Pleasure</option>
-        <option value="economy">Economy</option>
-        <option value="work">Work</option>
-      </select>
+      <p>
+        Category: {capitalizeFirstLetter(todo.category)}
+        <select name="categoryFilter" onChange={categoryChange}>
+          <option value="">Change category</option>
+          <option value="health">Health</option>
+          <option value="housing">Housing</option>
+          <option value="pleasure">Pleasure</option>
+          <option value="economy">Economy</option>
+          <option value="work">Work</option>
+        </select>
       </p>
       <button onClick={() => removeTodo(todo.id)}>Delete</button>
       <br />
       <Link to="/todo">Go back på todopage</Link>
-    </>
+    </section>
   );
 };
 

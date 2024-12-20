@@ -5,13 +5,12 @@ import { LoginContext } from "../context/LoginContext";
 import { Link } from "react-router-dom";
 import AddTodoItem from "../components/AddTodoItem";
 
-
 const TodoPage = () => {
   const {
     currentUser,
     currentUserData,
     capitalizeFirstLetter,
-    setCurrentUser
+    setCurrentUser,
   } = useContext(LoginContext);
 
   const [category, setCategory] = useState(null);
@@ -22,30 +21,35 @@ const TodoPage = () => {
 
   return (
     <>
-    <div className="greeting-container">
-      <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
-      <p>What would you like to do today?</p>
+      <div className="greeting-container">
+        <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
+        <p>What would you like to do today?</p>
       </div>
-      <AddTodoItem />
-      <span>Filter:</span>
-      <select
-        name="categoryFilter"
-        onChange={(e) => {
-          if (e.target.value === "") {
-            setCategory(null);
-          } else {
-            setCategory(e.target.value);
-          }
-        }}>
+      <div className="todo-wrapper">
 
-        <option value="">Choose category</option>
-        <option value="health">Health</option>
-        <option value="housing">Housing</option>
-        <option value="pleasure">Pleasure</option>
-        <option value="economy">Economy</option>
-        <option value="work">Work</option>
-      </select>
-      <select
+      
+      <aside>
+        <AddTodoItem />
+        <span>Filter:</span>
+        <section className="filter-section">
+          <select
+            name="categoryFilter"
+            onChange={(e) => {
+              if (e.target.value === "") {
+                setCategory(null);
+              } else {
+                setCategory(e.target.value);
+              }
+            }}
+          >
+            <option value="">Choose category</option>
+            <option value="health">Health</option>
+            <option value="housing">Housing</option>
+            <option value="pleasure">Pleasure</option>
+            <option value="economy">Economy</option>
+            <option value="work">Work</option>
+          </select>
+          <select
             name=""
             id=""
             onChange={(e) => setDeadlineEstimation(e.target.value)}
@@ -54,116 +58,136 @@ const TodoPage = () => {
             <option value="deadline">Deadline</option>
             <option value="estimation">Time estimation</option>
           </select>
-          <select name="" id="" onChange={(e)=> setRisingFalling(e.target.value)}>
+          <select
+            name=""
+            id=""
+            onChange={(e) => setRisingFalling(e.target.value)}
+          >
             <option value="order">Order</option>
             <option value="rising">Rising</option>
             <option value="falling">Falling</option>
           </select>
-          <select
-        name="completeFilter"
-        onChange={(e) => {
-          if (e.target.value === "") {
-            setComplete(null);
-          } else if (e.target.value === "true") {
-            setComplete(true);
-          } else {
-            setComplete(false);
-          }
-        }}
-      >
-        <option value="">All</option>
-        <option value="true">Complete</option>
-        <option value="false">Not complete</option>
-      </select>
-      <main>
-      
-      <div className="todos">
-        <div className="notCompletedTodos">
-          <h2>Not completed todos:</h2>
-          
 
-          {currentUserData?.todos.sort((a,b)=>{
-            if (risingFalling === 'rising'  && deadlineEstimation === 'estimation'){
-              return a.estimation - b.estimation 
-            } else if (risingFalling === 'falling' && deadlineEstimation === 'estimation'){
-              return  b.estimation - a.estimation
-            } else if(risingFalling === 'rising' && deadlineEstimation === 'deadline'){
-              return a.deadline - b.deadline
-            } else if(risingFalling === 'falling' && deadlineEstimation === 'deadline'){
-              return  b.deadline - a.deadline 
-            }
-          })
-            .filter((todo) => {
-              if (!category && !complete) {
-                return !todo.completed && todo.title !== "";
+          <select
+            name="completeFilter"
+            onChange={(e) => {
+              if (e.target.value === "") {
+                setComplete(null);
+              } else if (e.target.value === "true") {
+                setComplete(true);
+              } else {
+                setComplete(false);
               }
-              if (category && !complete) {
-                return (
-                  todo.category === category &&
-                  !todo.completed &&
-                  todo.title !== ""
-                );
-              }
-            })
-            .map((todo, index) => (
-              <TodoItem
-                todo={todo}
-                index={index}
-                key={index}
-              />
-            ))}
+            }}
+          >
+            <option value="">All</option>
+            <option value="true">Complete</option>
+            <option value="false">Not complete</option>
+          </select>
+        </section>
+      </aside>
+      <main>
+        <div className="todos">
+          <div className="notCompletedTodos">
+            <h2>Not completed todos:</h2>
+
+            {currentUserData?.todos
+              .sort((a, b) => {
+                if (
+                  risingFalling === "rising" &&
+                  deadlineEstimation === "estimation"
+                ) {
+                  return a.estimation - b.estimation;
+                } else if (
+                  risingFalling === "falling" &&
+                  deadlineEstimation === "estimation"
+                ) {
+                  return b.estimation - a.estimation;
+                } else if (
+                  risingFalling === "rising" &&
+                  deadlineEstimation === "deadline"
+                ) {
+                  return a.deadline - b.deadline;
+                } else if (
+                  risingFalling === "falling" &&
+                  deadlineEstimation === "deadline"
+                ) {
+                  return b.deadline - a.deadline;
+                }
+              })
+              .filter((todo) => {
+                if (!category && !complete) {
+                  return !todo.completed && todo.title !== "";
+                }
+                if (category && !complete) {
+                  return (
+                    todo.category === category &&
+                    !todo.completed &&
+                    todo.title !== ""
+                  );
+                }
+              })
+              .map((todo, index) => (
+                <TodoItem todo={todo} index={index} key={index} />
+              ))}
+          </div>
+          <div className="completedTodos">
+            <h2>Completed todos:</h2>
+            {currentUserData?.todos
+              .sort((a, b) => {
+                if (
+                  risingFalling === "rising" &&
+                  deadlineEstimation === "estimation"
+                ) {
+                  return a.estimation - b.estimation;
+                } else if (
+                  risingFalling === "falling" &&
+                  deadlineEstimation === "estimation"
+                ) {
+                  return b.estimation - a.estimation;
+                } else if (
+                  risingFalling === "rising" &&
+                  deadlineEstimation === "deadline"
+                ) {
+                  return new Date(a.deadline) - new Date(b.deadline);
+                } else if (
+                  risingFalling === "falling" &&
+                  deadlineEstimation === "deadline"
+                ) {
+                  return new Date(b.deadline) - new Date(a.deadline);
+                } else {
+                  return "";
+                }
+              })
+              .filter((todo) => {
+                if (!category && complete === null) {
+                  return todo.completed && todo.title !== "";
+                }
+                if (category && complete === null) {
+                  return (
+                    todo.category === category &&
+                    todo.completed &&
+                    todo.title !== ""
+                  );
+                }
+                if (!category && complete === true) {
+                  return todo.completed && todo.title !== "";
+                }
+                if (category && complete === true) {
+                  return (
+                    todo.category === category &&
+                    todo.completed &&
+                    todo.title !== ""
+                  );
+                }
+              })
+              .map((todo, index) => (
+                <TodoItem todo={todo} index={index} key={index} />
+              ))}
+          </div>
         </div>
-        <div className="completedTodos">
-          <h2>Completed todos:</h2>
-          {currentUserData?.todos.sort((a,b)=>{
-            if (risingFalling === 'rising'  && deadlineEstimation === 'estimation'){
-              return a.estimation - b.estimation 
-            } else if (risingFalling === 'falling' && deadlineEstimation === 'estimation'){
-              return  b.estimation - a.estimation
-            } else if(risingFalling === 'rising' && deadlineEstimation === 'deadline'){
-              return new Date(a.deadline) - new Date(b.deadline)
-            } else if(risingFalling === 'falling' && deadlineEstimation === 'deadline'){
-              return  new Date(b.deadline) - new Date(a.deadline)
-            } else {
-              return ''
-            }
-          })
-            .filter((todo) => {
-              if (!category && complete === null) {
-                return todo.completed && todo.title !== "";
-              }
-              if (category && complete === null) {
-                return (
-                  todo.category === category &&
-                  todo.completed &&
-                  todo.title !== ""
-                );
-              }
-              if (!category && complete === true) {
-                return todo.completed && todo.title !== "";
-              }
-              if (category && complete === true) {
-                return (
-                  todo.category === category &&
-                  todo.completed &&
-                  todo.title !== ""
-                );
-              }
-            })
-            .map((todo, index) => (
-              <TodoItem
-                todo={todo}
-                index={index}
-                key={index}
-                
-              />
-            ))}
-        </div>
-      </div>
       </main>
-      <br />
-      <Link to="/" onClick={()=> setCurrentUser(null)}>Log out</Link>
-      <Link to="/loggedin">Go to home</Link>
+      </div>
     </>
   );
 };

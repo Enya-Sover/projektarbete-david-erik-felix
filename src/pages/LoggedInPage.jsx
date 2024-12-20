@@ -27,7 +27,7 @@ const LoggedInPage = () => {
       
       <div className="greeting-container">
       <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
-      <p className="quote">Quote of the day: {greetings ? greetings : 'Gandi has spoken'}</p>
+      <p className="quote"><b>Quote of the day:</b> {greetings ? greetings : 'Gandi has spoken'}</p>
       </div>
       <main>
         
@@ -44,7 +44,7 @@ const LoggedInPage = () => {
         }) : <p>No todos available</p>}
       </ul>
       <p>
-        See<Link to="/todo"> all </Link>todos
+        <Link to="/todo">See all todos</Link>
       </p>
       </div>
 
@@ -58,7 +58,7 @@ const LoggedInPage = () => {
           )) : 
           <p>No habits available</p>}
       </ul>
-      <p>See<Link to="/habits"> all </Link>habits
+      <p><Link to="/habits">See all habits </Link>
       </p>
       </div>
 
@@ -72,7 +72,7 @@ const LoggedInPage = () => {
           )) : 
           <p>No events available</p>}
       </ul>
-      <p>See<Link to="/events"> all </Link>events
+      <p><Link to="/events">See all events</Link>
       </p>
       </div>
 

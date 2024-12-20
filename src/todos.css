@@ -3,14 +3,40 @@
   color: green;
 
 }
+.todos{
+display: flex;
+gap: 18px;
+}
+.filter-section{
+  display: grid;
+  width: 200px;
+}
+.todo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1200px; /* Begränsa bredden för wrapper */
+  margin: 0 auto; /* Centrera innehållet på skärmen */
+}
 
+aside {
+  flex: 1; /* Låt aside ta en del av utrymmet */
+  max-width: 250px; /* Sätt en maxbredd för aside */
+  padding: 5px;
+  margin-top: 30px;
+}
+
+main {
+  flex: 2; /* Låt main ta mer plats än aside */
+  margin: 0;
+  padding: 0;
+}
 
 .todo{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 20px;
   padding: 15px;
   border-radius: 15px;
   background-color: #eef2f7;
@@ -28,3 +54,19 @@
   width: 200px;
 }
 
+.edit-section button{
+padding: 5px;
+max-width: fit-content;
+
+}
+.edit-section p{
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+.edit-section{
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+}
