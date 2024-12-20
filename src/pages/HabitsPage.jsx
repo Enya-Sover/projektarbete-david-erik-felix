@@ -85,7 +85,7 @@ let HabitsPage = () => {
       
 
       
-      <h3>Your habits are:</h3>
+      <h3>Your habits:</h3>
 
       <div className="habitList">
 

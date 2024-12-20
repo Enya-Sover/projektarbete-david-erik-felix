@@ -52,7 +52,7 @@ let AddNewHabits = () => {
             <div className="add-btn">
             <button  onClick={addHabit}>Add</button>
             </div>
-            <h2>Your Habits</h2>
+            <h2>Your Habits:</h2>
             <div className="show-add">
             {currentUserData?.habits?.map((h) => (
                 <div className="add-habit-container" key={h.id }>
