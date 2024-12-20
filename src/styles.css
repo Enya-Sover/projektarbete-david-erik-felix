@@ -10,7 +10,7 @@
   border-radius: 15px;
   background-color: #f6faff;
   border: 2px solid rgb(242, 246, 249);
-  box-shadow: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.037);
   min-height: 350px;
   min-width: 350px;
 }
