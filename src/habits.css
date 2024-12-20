@@ -1,35 +1,52 @@
-.add-habit-container {
+.add-habit-container, .show-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     margin: 20px;
     padding: 15px;
     border-radius: 15px;
     background-color: #f6faff;
     border: 2px solid rgb(242, 246, 249);
     box-shadow: black;
-    min-height: 20px;
-    min-width: 20px;
+    max-height: 350px;
+    max-width: 350px;   
 }
 
-.show-container {
+.habitList {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
-    padding: 15px;
-    border-radius: 15px;
-    background-color: #f6faff;
-    border: 2px solid rgb(242, 246, 249);
-    box-shadow: black;
-    min-height: 20px;
-    min-width: 20px;
 }
 
-button {
+
+.function-btns {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    gap: 5px;
 }
+
+.filter-and-sort, .input-habit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+h1, h2, h3, footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+

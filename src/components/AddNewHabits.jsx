@@ -36,26 +36,26 @@ let AddNewHabits = () => {
     }
 
     return(
-        <div>
+        <div className="main-container">
             <h1>Add a new Habit</h1>
-            <label>Habit: </label>
-            <input type="text" placeholder="..." value={newHabit} onChange={(e) => setNewHabit(e.target.value)}/>
+            <div className="input-habit">
+            <input type="text" placeholder="Habit" value={newHabit} onChange={(e) => setNewHabit(e.target.value)}/>
             
-            <label>Priority: 
+            
             <select name="dropdown" value={newPriority} onChange={(e) => setNewPriority(e.target.value)}>
-                <option value="">......</option>
+                <option value="">Priority</option>
                 <option value="high">High</option>
                 <option value="mid">Mid</option>
                 <option value="low">Low</option>
             </select>
-            </label>
             
-            <label>Repetition: 
-                <input type="number" value={newRepetition} placeholder="1" min="1" onChange={(e) => setNewRepetition(e.target.value)} />
-            </label>
-            <br />
-            <button onClick={addHabit}>Add</button>
             
+        
+                <input type="number" value={newRepetition} placeholder="Number of Repetitions" min="1" onChange={(e) => setNewRepetition(e.target.value)} />
+                </div>
+            <div className="add-btn">
+            <button  onClick={addHabit}>Add</button>
+            </div>
             <h2>Your Habits</h2>
             {currentUserData?.habits?.map((h) => (
                 <div className="add-habit-container" key={h.id }>
@@ -64,12 +64,9 @@ let AddNewHabits = () => {
                 </p>
                 </div>
             ))}
-            <footer className="Nav">
+            <footer>
             <br />
             <Link to="/habits">Back to your habits</Link>
-            <br />
-            <Link to="/">Logga in</Link>
-            <br />
             <Link to="/loggedin">Back to Home page</Link>
             </footer>
         </div>

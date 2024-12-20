@@ -56,10 +56,9 @@ let HabitsPage = () => {
 
   return (
     <div>
-      <h2>Welcome {currentUserData?.userName}</h2>
-
-      <div className="filterAndSort">
-        <h3>Filter todo:</h3>
+      <h3>Filter todo:</h3>
+      <div className="filter-and-sort">
+        
         <select name="filter" id="priority" value={filterPrio} onChange={(e) => setFilterPrio(e.target.value)}>
           <option value="filterPrio">Filter Priority</option>
           <option value="high">High</option>
@@ -110,10 +109,12 @@ let HabitsPage = () => {
           .map((h) => (
             <div className="show-container" key={h.id}>
               <p>Habit: {h.title}</p> <p>Priority: {h.priority}</p> <p>Repetitions: {h.repetitions} times</p>
+              <div className="function-btns">
               <button onClick={() => deleteHabit(h.id)}>Delete</button>
               <button onClick={() => handleRepetitions(h.id, "increase")}> + </button>
               <button onClick={() => handleRepetitions(h.id, "decrease")}> - </button>
               <button onClick={() => resetHabit(h.id)}>Reset</button>
+              </div>
             </div>
           ))}
       </div>
