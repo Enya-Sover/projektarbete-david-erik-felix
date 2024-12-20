@@ -16,7 +16,7 @@ import './habits.css'
 
 function App() {
 const navigate = useNavigate()
-  const {setCurrentUser} = useContext(LoginContext)
+  const {setCurrentUser, currentUser} = useContext(LoginContext)
   const handleLogOut = () => {
     setCurrentUser(null);
     navigate("/");
@@ -33,7 +33,7 @@ const navigate = useNavigate()
         <Link to="/events">Events</Link>
       </nav>
       <div className="btn-container">
-      <button onClick={handleLogOut}>Log out</button>
+      {currentUser && <button onClick={handleLogOut}>Log out</button>}
       </div>
       </header>
     <Routes>
