@@ -113,7 +113,7 @@ let HabitsPage = () => {
           })
           .map((h) => (
             <div className="show-container" key={h.id}>
-              <p> Habit: {h.title} Priority: {h.priority} Repetitions: {h.repetitions} times</p>
+              <p> <b>{h.title} </b> <br /> <b> Priority:</b> {h.priority} <br /> <b>Repetitions:</b> {h.repetitions} times</p>
               <div className="function-btns">
               <button onClick={() => deleteHabit(h.id)}>Delete</button>
               <button onClick={() => handleRepetitions(h.id, "increase")}> + </button>

@@ -1,3 +1,10 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    align-items: center;
+}
+
 .show-container {
     display: flex;
     align-items: center;
@@ -13,6 +20,14 @@
     max-width: 350px;   
 }
 
+.show-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
 .add-habit-container {
     display: flex;
     align-items: center;
@@ -23,10 +38,13 @@
     border-radius: 15px;
     background-color: #f6faff;
     border: 2px solid rgb(242, 246, 249);
-    box-shadow: black;
-    max-height: 350px;
-    max-width: 350px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.add-habit-data {
+    /* text-align: center; */
+}
+
 
 .habitList {
     display: flex;
@@ -66,16 +84,6 @@
     align-items: center;
     justify-content: center;
 }
-
-.show-add {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-}
-
-
 
 select{
     border-radius: 5px;

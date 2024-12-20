@@ -61,7 +61,7 @@ let AddNewHabits = () => {
             {currentUserData?.habits?.map((h) => (
                 <div className="add-habit-container" key={h.id }>
                 <p className="add-habit-data" key={h.id}>
-                  Habit: {h.title} Priority: {h.priority}  Repetitions: {h.repetitions} times 
+                  <b>{h.title} </b> <br/> <b>Priority:</b> {h.priority} <br/> <b>Repetitions: </b>{h.repetitions} times  
                 </p>
                 </div>
                 
