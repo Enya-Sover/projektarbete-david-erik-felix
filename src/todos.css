@@ -19,19 +19,19 @@ gap: 18px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  max-width: 1200px; /* Begränsa bredden för wrapper */
-  margin: 0 auto; /* Centrera innehållet på skärmen */
+  max-width: 1200px; 
+  margin: 0 auto;
 }
 
 aside {
-  flex: 1; /* Låt aside ta en del av utrymmet */
-  max-width: 250px; /* Sätt en maxbredd för aside */
+  flex: 1; 
+  max-width: 250px; 
   padding: 5px;
   margin-top: 30px;
 }
 
 main {
-  flex: 2; /* Låt main ta mer plats än aside */
+  flex: 2; 
   margin: 0;
   padding: 0;
 }
