@@ -20,13 +20,13 @@ export function CitatContextProvider ({children}){
         let breakingBad = async ()=>{
             let response = await fetch('https://api.breakingbadquotes.xyz/v1/quotes')
             let data = await response.json()
-            setGreetings(data[0].quote)
+            setGreetings2(data[0].quote)
         }
         breakingBad()
     }, [])
 
     return(
-        <CitatContext.Provider value={{ greetings, setGreetings, greetings2}}>
+        <CitatContext.Provider value={{ greetings, greetings2}}>
             {children}
         </CitatContext.Provider>    
     )

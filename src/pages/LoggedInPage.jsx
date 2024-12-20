@@ -8,7 +8,6 @@ const LoggedInPage = () => {
   let { greetings, greetings2 } = useContext(CitatContext);
   const {
     currentUser,
-    setCurrentUser,
     currentUserData,
     capitalizeFirstLetter,
   } = useContext(LoginContext);
@@ -36,7 +35,7 @@ const LoggedInPage = () => {
       <div className="greeting-container">
         <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
         <p className="quote">
-          <b>Quote of the day:</b> {greetings ? greetings : greetings2 ? greetings2 :"Gandi has spoken"}
+          <b>Quote of the day:</b> {greetings ? greetings : greetings2 ? greetings2 :"Gandhi has spoken"}
         </p>
       </div>
       <main>
@@ -48,7 +47,7 @@ const LoggedInPage = () => {
               threeTodos.map((todo) => {
                 return (
                   <li key={todo.title}>
-                    <b>Title:</b> {capitalizeFirstLetter(todo.title)}
+                   {capitalizeFirstLetter(todo.title)}
                   </li>
                 );
               })
@@ -69,8 +68,8 @@ const LoggedInPage = () => {
                 (habit, i) =>
                   habit.title !== '' && (
                     <li key={i}>
-                      Title: {capitalizeFirstLetter(habit.title)}. Repetitions:{" "}
-                      {habit.repetitions}
+                     {capitalizeFirstLetter(habit.title)}.{" "}
+                      {habit.repetitions}{" "} times 
                     </li>
                   ))) : (<p>No habits available</p>
                   )}

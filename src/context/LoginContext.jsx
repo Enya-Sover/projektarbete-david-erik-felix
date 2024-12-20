@@ -39,6 +39,7 @@ export function LoginContextProvider({ children }) {
   let [currentUser, setCurrentUser] = JSON.parse(localStorage.getItem('currentUser')) ? useState(JSON.parse(localStorage.getItem('currentUser'))) : useState(null)
 
   const [currentUserData, setCurrentUserData] = useState(regUser.find((user) => user.userName === currentUser));
+  
   const capitalizeFirstLetter = (word)=>{
     return word.charAt(0).toUpperCase() + word.slice(1)
   }
