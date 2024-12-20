@@ -133,6 +133,7 @@ const EditTodo = () => {
   };
 
   return (
+    <div className="greeting-container">
     <section className="edit-section">
       <h2>
         <i>
@@ -238,6 +239,7 @@ const EditTodo = () => {
       <br />
       <Link to="/todo">Go back på todopage</Link>
     </section>
+    </div>
   );
 };
 
