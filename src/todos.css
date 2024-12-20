@@ -1,6 +1,10 @@
-
 .completedTodos{
   color: green;
+}
+.completedTodos, .notCompletedTodos{
+display: flex;
+flex-direction: column;
+gap: 15px;
 
 }
 .todos{
