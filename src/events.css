@@ -21,7 +21,10 @@
 .filter-dropdown {
   margin: 10px 0;
   text-align: center;
-  
+  border: #f3eeee solid 1px;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fbfbfb;
 }
 
 .filter-dropdown select {
@@ -74,6 +77,10 @@ ol {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  border: #f3eeee solid 1px;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: #fbfbfb;
 }
 
 .event-title {
@@ -141,6 +148,17 @@ ol {
 }
 
 
+.event-calendar-container  {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+
+}
+
+.back-button-event {
+ margin-top: 30px; 
+}
 
 
 /* ________________________________________________MEDIAS_____________________________________________________________________ */
