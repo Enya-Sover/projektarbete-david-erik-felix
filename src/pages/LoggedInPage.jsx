@@ -69,8 +69,8 @@ const LoggedInPage = () => {
                 (habit, i) =>
                   habit.title !== '' && (
                     <li key={i}>
-                      Title: {capitalizeFirstLetter(habit.title)}. Repetitions:{" "}
-                      {habit.repetitions}
+                      <b>{capitalizeFirstLetter(habit.title)}.</b> <br /> <b>Repetitions:{" "} </b>
+                      {habit.repetitions} <br /> <br />
                     </li>
                   ))) : (<p>No habits available</p>
                   )}
