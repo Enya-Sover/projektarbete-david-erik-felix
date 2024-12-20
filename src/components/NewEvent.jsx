@@ -19,7 +19,10 @@ const NewEvent = () => {
   const createNewEvent = () => {
     if (!name || !start || !end) {
       alert("Please fill in all fields!");
+      return
     }
+
+    const eventExists = currentUserData?.events.some((event) => event.name === name)
   
     const newEvent = {
       id: Date.now(),
@@ -37,13 +40,16 @@ const NewEvent = () => {
       user.userName === currentUser ? updatedUserData : user
     );
   
+    if (eventExists) {
+    alert("You cant create a copy of an already existing event.") 
+  } else {
     setRegUser(updatedUsers);
     setCurrentUserData(updatedUserData);
   
     alert("Event created successfully");
     setName("");
     setStart("");
-    setEnd("");
+    setEnd(""); }
   };
 
   return (

@@ -28,7 +28,7 @@ const LoggedInPage = () => {
   const threeEvents = currentUserData.events
     .filter((event) => new Date(event.start) > today && event.id)
     .sort((a, b) => new Date(a.start) - new Date(b.start))
-    .slice(-3);
+    .slice(-3); 
 
   return (
     <>
@@ -68,8 +68,8 @@ const LoggedInPage = () => {
                 (habit, i) =>
                   habit.title !== '' && (
                     <li key={i}>
-                     {capitalizeFirstLetter(habit.title)}.{" "}
-                      {habit.repetitions}{" "} times 
+                      <b>{capitalizeFirstLetter(habit.title)}.</b> <br /> <b>Repetitions:{" "} </b>
+                      {habit.repetitions} <br /> <br />
                     </li>
                   ))) : (<p>No habits available</p>
                   )}

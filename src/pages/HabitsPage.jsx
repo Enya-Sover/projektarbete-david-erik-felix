@@ -1,5 +1,3 @@
-
-
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { LoginContext } from "../context/LoginContext";
@@ -56,10 +54,15 @@ let HabitsPage = () => {
 
   return (
     <div>
-      <h2>Welcome {currentUserData?.userName}</h2>
-
-      <div className="filterAndSort">
+      
+    <div className="likn-btn">
+      <Link to="/addhabits">
+          <button>Add a new Habit</button>
+        </Link>
+        </div>
         <h3>Filter todo:</h3>
+      <div className="filter-and-sort">
+      
         <select name="filter" id="priority" value={filterPrio} onChange={(e) => setFilterPrio(e.target.value)}>
           <option value="filterPrio">Filter Priority</option>
           <option value="high">High</option>
@@ -79,9 +82,10 @@ let HabitsPage = () => {
           <option value="ascendingPrio">Low to High</option>
         </select>
       </div>
+      
 
       
-      <h3>Your habits are:</h3>
+      <h3>Your habits:</h3>
 
       <div className="habitList">
 
@@ -109,21 +113,16 @@ let HabitsPage = () => {
           })
           .map((h) => (
             <div className="show-container" key={h.id}>
-              <p>Habit: {h.title}</p> <p>Priority: {h.priority}</p> <p>Repetitions: {h.repetitions} times</p>
+              <p> <b>{h.title} </b> <br /> <b> Priority:</b> {h.priority} <br /> <b>Repetitions:</b> {h.repetitions} times</p>
+              <div className="function-btns">
               <button onClick={() => deleteHabit(h.id)}>Delete</button>
               <button onClick={() => handleRepetitions(h.id, "increase")}> + </button>
               <button onClick={() => handleRepetitions(h.id, "decrease")}> - </button>
               <button onClick={() => resetHabit(h.id)}>Reset</button>
+              </div>
             </div>
           ))}
       </div>
-
-      <footer className="navigate">
-        <Link to="/addhabits">
-          <button>Add a new Habit</button>
-        </Link>
-        <Link to="/loggedin">Back to Home page</Link>
-      </footer>
     </div>
   )
 }

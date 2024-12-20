@@ -1,35 +1,108 @@
-.add-habit-container {
+.main-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;    
     align-items: center;
-    justify-content: center;
-    margin: 20px;
-    padding: 15px;
-    border-radius: 15px;
-    background-color: #f6faff;
-    border: 2px solid rgb(242, 246, 249);
-    box-shadow: black;
-    min-height: 20px;
-    min-width: 20px;
 }
 
 .show-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     margin: 20px;
     padding: 15px;
     border-radius: 15px;
     background-color: #f6faff;
     border: 2px solid rgb(242, 246, 249);
     box-shadow: black;
-    min-height: 20px;
-    min-width: 20px;
+    max-height: 350px;
+    max-width: 350px;   
 }
 
-button {
+.show-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.add-habit-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #f6faff;
+    border: 2px solid rgb(242, 246, 249);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.add-habit-data {
+    /* text-align: center; */
+}
+
+
+.habitList {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+.likn-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 20px;
+    
+  }
+.function-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.filter-and-sort, .input-habit {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 10px;
+}
+
+.add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+select{
+    border-radius: 5px;
+    height: 25px;
+}
+
+input {
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 20px;
+}
+
+input::placeholder {
+    color: black;
+}
+
+h1, h2, h3, footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
