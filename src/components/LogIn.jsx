@@ -33,17 +33,17 @@ const LogIn = () => {
         <label htmlFor="username">Username: </label>
         <input
           type="text"
-          placeholder="Username"
+          placeholder="Username.."
           onChange={(e) => setLoginUsername(e.target.value)}
         />
-        <br />
+      
         <label htmlFor="password">Password: </label>
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Password.."
           onChange={(e) => setLoginPassword(e.target.value)}
         />
-        <br />
+        
       </div>
       <button onClick={() => checkLogin(loginUsername, loginPassword)}>
         Log in

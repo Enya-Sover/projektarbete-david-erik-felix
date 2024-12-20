@@ -101,12 +101,18 @@ main {
   gap: 15px;
 }
 .input-login-container {
-
-  
+justify-content: center;
+display: flex;
+flex-direction: column;
+margin: 0px;
+padding: 0px;  
+}
+label {
+  font-weight: bold;
 }
 
 a {
-  color: #161718;
+  color: #3290ed;
   text-decoration: none;
 }
 
@@ -171,10 +177,6 @@ button {
   ol {
     list-style-type: none;
     padding-left: 0; 
-  }
-
-  .link-style {
-    color: rgb(132, 20, 144);
   }
   
   button:hover {
