@@ -32,11 +32,13 @@ aside {
   padding: 5px;
   margin-top: 30px;
 }
+.todos-main{
+margin-right: 200px;
 
+}
 main {
   flex: 2; 
   margin: 0;
-  margin-right: 200px;
   padding: 0;
 }
 

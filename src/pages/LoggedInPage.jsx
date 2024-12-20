@@ -5,7 +5,7 @@ import { LoginContext } from "../context/LoginContext";
 import { Link, useNavigate } from "react-router-dom";
 
 const LoggedInPage = () => {
-  let { greetings } = useContext(CitatContext);
+  let { greetings, greetings2 } = useContext(CitatContext);
   const {
     currentUser,
     setCurrentUser,
@@ -36,7 +36,7 @@ const LoggedInPage = () => {
       <div className="greeting-container">
         <h2>Welcome {capitalizeFirstLetter(currentUser)}</h2>
         <p className="quote">
-          <b>Quote of the day:</b> {greetings ? greetings : "Gandi has spoken"}
+          <b>Quote of the day:</b> {greetings ? greetings : greetings2 ? greetings2 :"Gandi has spoken"}
         </p>
       </div>
       <main>

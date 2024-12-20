@@ -7,6 +7,7 @@ export const CitatContext = createContext()
 export function CitatContextProvider ({children}){
 
     let [greetings, setGreetings] = useState('')
+    let [greetings2, setGreetings2] = useState('')
 
     useEffect(() => {
         let getGreetings = async () => {
@@ -15,10 +16,17 @@ export function CitatContextProvider ({children}){
             setGreetings(json[0].content)
         }
         getGreetings()
+
+        let breakingBad = async ()=>{
+            let response = await fetch('https://api.breakingbadquotes.xyz/v1/quotes')
+            let data = await response.json()
+            setGreetings(data[0].quote)
+        }
+        breakingBad()
     }, [])
 
     return(
-        <CitatContext.Provider value={{ greetings, setGreetings}}>
+        <CitatContext.Provider value={{ greetings, setGreetings, greetings2}}>
             {children}
         </CitatContext.Provider>    
     )
