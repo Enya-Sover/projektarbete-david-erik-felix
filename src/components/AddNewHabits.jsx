@@ -43,7 +43,7 @@ let AddNewHabits = () => {
             <select name="dropdown" value={newPriority} onChange={(e) => setNewPriority(e.target.value)}>
                 <option value="">Priority</option>
                 <option value="High">High</option>
-                <option value="Lid">Mid</option>
+                <option value="Mid">Mid</option>
                 <option value="Low">Low</option>
             </select>
             
