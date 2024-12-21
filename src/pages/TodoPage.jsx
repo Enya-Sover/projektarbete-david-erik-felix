@@ -87,7 +87,7 @@ const TodoPage = () => {
           </select>
         </section>
       </aside>
-      <main>
+      <main className="todos-main">
         <div className="todos">
           <div className="notCompletedTodos">
             <h2>Not completed todos:</h2>

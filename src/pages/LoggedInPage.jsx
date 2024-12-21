@@ -8,7 +8,6 @@ const LoggedInPage = () => {
   let { greetings, greetings2 } = useContext(CitatContext);
   const {
     currentUser,
-    setCurrentUser,
     currentUserData,
     capitalizeFirstLetter,
   } = useContext(LoginContext);
@@ -48,7 +47,7 @@ const LoggedInPage = () => {
               threeTodos.map((todo) => {
                 return (
                   <li key={todo.title}>
-                    <b>Title:</b> {capitalizeFirstLetter(todo.title)}
+                   {capitalizeFirstLetter(todo.title)}
                   </li>
                 );
               })

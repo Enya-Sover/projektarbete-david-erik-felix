@@ -81,12 +81,13 @@ let AddTodoItem = ()=>{
         placeholder="Estimation in minutes"
         onChange={(e) => setEstimation(e.target.value)}
       />
-     
+     <label htmlFor=""> Deadline:
       <input
         type="date"
         placeholder="Deadline"
         onChange={(e) => setDeadline(e.target.value)}
       />
+     </label>
       <button onClick={addTodo}>Add todo</button>
       <p id="errorMessage">{error}</p>
     </div>)

@@ -16,7 +16,7 @@ import './habits.css'
 
 function App() {
 const navigate = useNavigate()
-  const {setCurrentUser} = useContext(LoginContext)
+  const {setCurrentUser, currentUser} = useContext(LoginContext)
   const handleLogOut = () => {
     setCurrentUser(null);
     navigate("/");
@@ -26,6 +26,7 @@ const navigate = useNavigate()
     <>
     <header className="header">
         <img src="./src/assets/Logo.jpg" alt="logo" className="logo-container"/>
+        {currentUser && <>
         <nav>
         <Link to="/loggedin">Start</Link>
         <Link to="/todo">Todos</Link>
@@ -33,8 +34,8 @@ const navigate = useNavigate()
         <Link to="/events">Events</Link>
       </nav>
       <div className="btn-container">
-      <button onClick={handleLogOut}>Log out</button>
-      </div>
+       <button onClick={handleLogOut}>Log out</button>
+      </div></>}
       </header>
     <Routes>
     <Route path="/" element={<Home/>}/>

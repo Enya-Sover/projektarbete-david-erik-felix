@@ -18,7 +18,7 @@
   display: flex;
 }
 a:hover{
-  color: blue;
+  color: darkblue;
 }
 
 .todo-container ul {
@@ -90,7 +90,6 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
- 
 }
 
 .log-in-container {
@@ -124,6 +123,9 @@ nav a {
   font-size: large;
   color: white;
   font-weight: bold;
+}
+nav a:hover{
+  color: blue;
 }
 
 body{

@@ -7,6 +7,9 @@ flex-direction: column;
 gap: 15px;
 
 }
+.edit-section p button{
+  display: inline-block;
+}
 .todos{
 display: flex;
 gap: 18px;
@@ -29,7 +32,10 @@ aside {
   padding: 5px;
   margin-top: 30px;
 }
+.todos-main{
+margin-right: 200px;
 
+}
 main {
   flex: 2; 
   margin: 0;
