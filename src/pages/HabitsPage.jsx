@@ -60,7 +60,7 @@ let HabitsPage = () => {
           <button>Add a new Habit</button>
         </Link>
         </div>
-        <h3>Filter todo:</h3>
+        <h3>Filter habits:</h3>
       <div className="filter-and-sort">
       
         <select name="filter" id="priority" value={filterPrio} onChange={(e) => setFilterPrio(e.target.value)}>
