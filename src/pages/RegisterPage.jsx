@@ -46,16 +46,20 @@ const RegisterPage = ()=>{
         navigate('/')
       };
 
-    return (<>
+    return (<div className="reg-page-container">
     <h1>Welcome to the register page</h1>
-
+<label htmlFor="">Username: <br />
     <input type="text" placeholder="Username" onChange={(e)=> setNewUserName(e.target.value)}/>
+
+</label>
+<label htmlFor=""> Password: <br />
     <input type="password" placeholder="Password" onChange={(e)=> setNewPassword(e.target.value)}/>
+</label>
     <button onClick={()=> addUser(newUserName, newPassword)}>Submit</button>
     <br />
     <Link to='/'>Go to homepage</Link>
 
-    </>)
+    </div>)
 }
 
 export default RegisterPage

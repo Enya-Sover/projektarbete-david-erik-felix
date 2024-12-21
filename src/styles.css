@@ -14,6 +14,13 @@
   min-height: 350px;
   min-width: 350px;
 }
+.reg-page-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
 .todos{
   display: flex;
 }
