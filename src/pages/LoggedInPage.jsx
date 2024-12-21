@@ -41,7 +41,7 @@ const LoggedInPage = () => {
       </div>
       <main>
         <div className="todo-container">
-          <h2>Your 3 latest added todos:</h2>
+          <h2>3 Most recent added todos:</h2>
 
           <ul>
             {threeTodos.length > 0 ? (
