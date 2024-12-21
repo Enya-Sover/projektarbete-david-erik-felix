@@ -9,7 +9,7 @@ let HabitsPage = () => {
   let [filterPrio, setFilterPrio] = useState("")
   let [sortPrio, setSortPrio] = useState("")
   let [sortRep, setSortRep] = useState("")
-
+  
   let deleteHabit = (id) => {
     if (!currentUser) {
       alert("logga in")
@@ -51,7 +51,7 @@ let HabitsPage = () => {
     )
     setRegUser(updatedRegUsers)
   }
-
+  console.log(currentUserData.habits)
   return (
     <div>
       
@@ -70,13 +70,13 @@ let HabitsPage = () => {
           <option value="low">Low</option>
         </select>
 
-        <select value={sortRep} onChange={(e) => setSortRep(e.target.value)}>
+        <select onChange={(e) => setSortRep(e.target.value)}>
           <option value="sortR">Sort Repetitions</option>
           <option value="descendingRep">High to Low</option>
           <option value="ascendingRep">Low to High</option>
         </select>
 
-        <select value={sortPrio} onChange={(e) => setSortPrio(e.target.value)}>
+        <select  onChange={(e) => setSortPrio(e.target.value)}>
           <option value="sortP">Sort Priority</option>
           <option value="descendingPrio">High to Low</option>
           <option value="ascendingPrio">Low to High</option>
@@ -89,8 +89,9 @@ let HabitsPage = () => {
 
       <div className="habitList">
 
-        {currentUserData?.habits
+        {currentUserData?.habits 
           .filter((habit) => {
+            
             if (!filterPrio || filterPrio === "filterPrio") {
               return true
             }
@@ -110,8 +111,8 @@ let HabitsPage = () => {
               return priorityOrder[b.priority] - priorityOrder[a.priority]
             }
             return 0
-          })
-          .filter(hab=> hab.title !== '').map((h) => (
+          }).filter(hab=> hab.title !== '')
+          .map((h) => (
             <div className="show-container" key={h.id}>
               <p> <b>{h.title} </b> <br /> <b> Priority:</b> {h.priority} <br /> <b>Repetitions:</b> {h.repetitions} times</p>
               <div className="function-btns">

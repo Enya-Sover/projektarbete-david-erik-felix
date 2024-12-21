@@ -54,7 +54,7 @@ let AddNewHabits = () => {
             </div>
             <h2>Your Habits:</h2>
             <div className="show-add">
-            {currentUserData?.habits?.map((h) => (
+            {currentUserData?.habits?.filter(hab=> hab.title!=='').map((h) => (
                 <div className="add-habit-container" key={h.id }>
                 <p className="add-habit-data" key={h.id}>
                   <b>{h.title} </b> <br/> <b>Priority:</b> {h.priority} <br/> <b>Repetitions: </b>{h.repetitions} times  
