@@ -42,9 +42,9 @@ let AddNewHabits = () => {
                  
             <select name="dropdown" value={newPriority} onChange={(e) => setNewPriority(e.target.value)}>
                 <option value="">Priority</option>
-                <option value="High">High</option>
-                <option value="Lid">Mid</option>
-                <option value="Low">Low</option>
+                <option value="high">High</option>
+                <option value="mid">Mid</option>
+                <option value="low">Low</option>
             </select>
             
                 <input type="number" value={newRepetition} placeholder="Number of Repetitions" min="1" onChange={(e) => setNewRepetition(e.target.value)} />
