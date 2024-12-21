@@ -111,7 +111,7 @@ let HabitsPage = () => {
             }
             return 0
           })
-          .map((h) => (
+          .filter(hab=> hab.title !== '').map((h) => (
             <div className="show-container" key={h.id}>
               <p> <b>{h.title} </b> <br /> <b> Priority:</b> {h.priority} <br /> <b>Repetitions:</b> {h.repetitions} times</p>
               <div className="function-btns">
