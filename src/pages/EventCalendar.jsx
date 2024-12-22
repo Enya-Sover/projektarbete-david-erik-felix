@@ -23,26 +23,20 @@ const EventCalendar = () => {
     return <p>Please log in to see your calendar.</p>;
   }
 
-  const now = new Date(); // skapar en ny instans av dagens datum
+  const now = new Date(); 
 
   // filterfunktioner
 
+  // sortera events
+
   const sortUpcomingEvents = currentUserData?.events
     ?.filter((event) => new Date(event.start) > now)
-    // konverterar datum-strängen till ett date-objekt. Om startdatum för event är senare än dagens datum, läggs det i listan.
+    
     .sort((a, b) => new Date(a.start) - new Date(b.start));
-  // sorterar listan med framtida event i stigande ordning baserat på deras startdatum
-  // a placeras före b om resultatet är negativt
-  // b placeras före a om resultatet är positivt
-  // ser till att de närmaste framtida eventen kommer först i listan.
 
   const sortPastEvents = currentUserData?.events
     ?.filter((event) => new Date(event.start) <= now)
     .sort((a, b) => new Date(b.start) - new Date(a.start));
-
-  // samma logik som för upcomming events, men spegelvänt,
-  // eventet inkluderas i listan om startdatum är tidigare än dagens datum
-  // de mest nyligen avslutade eventen kommer först i listan.
 
   // ta bort event
 
@@ -59,9 +53,6 @@ const EventCalendar = () => {
     );
   };
 
-  // skapar en ny lista enbart med de event som inte har samma ID som det event som tas bort
-  // om event.id === id, exkluderas det eventet från listan.
-
   // redigera event
 
   const editEvent = (updatedEvent) => {
@@ -77,17 +68,13 @@ const EventCalendar = () => {
     );
   };
 
-  // event.id === updatedEvent.id:
-  // jämför ID:t för varje event med det uppdaterade eventets ID.
-  // om ID:t matchar:
-  // så byts det gamla eventet mot det nya (updatedEvent)
-  // sedan uppdateras användadatat och användarlistan med den uppdaterade lista
-
-  // enkel back funktion
+  // enkel backfunktion för button
 
   const handleBackClick = () => {
     navigate("/loggedin")
   };
+
+ // huvudreturn
 
   return (
     <div className="event-calendar-container">
